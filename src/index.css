@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #e9eaebb9;
+  --gradient-blue-start: #9bafd9;
+  --gradient-blue-end: #103783;
+  --gradient-green-start: #2d6a4f;
+  --gradient-green-end: #40916c;
+  --gradient-teal-start: #74c69d;
+  --gradient-teal-end: #52b788;
+}
+
+/* Arabic font-face definition */
+@font-face {
+  font-family: "Palestine-Regular";
+  src: url("/fonts/Palestine-Regular.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "KOGhorab-Regular";
+  src: url("/fonts/KOGhorab-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "KoGaliModern-Bold";
+  src: url("/fonts/KoGaliModern-Bold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zaatar-Regular";
+  src: url("/fonts/Zaatar-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body,
+html,
+* {
+  font-family: "Palestine-Regular", sans-serif;
+}
