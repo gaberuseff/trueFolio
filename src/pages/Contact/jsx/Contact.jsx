@@ -131,7 +131,7 @@ export default function Contact() {
               variants={cardVariants}
               initial="hidden"
               whileInView="show"
-              viewport={{once: true}}
+              viewport={{once: true, amount: 0}}
               custom={idx}
               className="group relative overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-[0_15px_35px_rgba(15,23,42,0.08)] p-5">
               <div
@@ -162,136 +162,9 @@ export default function Contact() {
       </section>
 
       {/* Form + info */}
-      <section className="max-w-6xl mx-auto px-4 py-14 md:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
-          <motion.div
-            initial={{opacity: 0, x: 30}}
-            whileInView={{opacity: 1, x: 0}}
-            viewport={{once: true}}
-            transition={{duration: 0.7}}
-            className="relative overflow-hidden rounded-3xl bg-white border border-slate-200 p-8 md:p-10 shadow-[0_20px_50px_rgba(15,23,42,0.08)]">
-            <div className="absolute -top-12 -left-16 w-56 h-56 rounded-full bg-gradient-to-br from-blue-500/10 to-cyan-400/5 blur-3xl" />
-            <div className="absolute -bottom-10 -right-10 w-48 h-48 rounded-full bg-gradient-to-tr from-purple-500/10 to-pink-400/5 blur-3xl" />
-
-            <div className="relative z-10 space-y-3 mb-8" dir="rtl">
-              <p className="text-sm font-semibold text-cyan-600">دعنا نبدأ</p>
-              <h2 className="text-3xl md:text-4xl font-black text-slate-900">
-                أخبرنا عن مشروعك
-              </h2>
-              <p className="text-slate-600 leading-relaxed">
-                أرسل لنا تفاصيل احتياجك وسيتواصل معك أحد المختصين خلال 24 ساعة
-                لتقديم عرض تفصيلي وخطة تنفيذ واضحة.
-              </p>
-            </div>
-
-            <form className="relative z-10 space-y-4" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <label className="flex flex-col gap-2 text-sm text-slate-700">
-                  الاسم الكامل
-                  <input
-                    required
-                    type="text"
-                    placeholder="أدخل اسمك"
-                    className="w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-100"
-                  />
-                </label>
-                <label className="flex flex-col gap-2 text-sm text-slate-700">
-                  البريد الإلكتروني
-                  <input
-                    required
-                    type="email"
-                    placeholder="you@example.com"
-                    className="w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-100"
-                  />
-                </label>
-              </div>
-
-              <label className="flex flex-col gap-2 text-sm text-slate-700">
-                رقم الهاتف
-                <input
-                  type="tel"
-                  placeholder="0123 456 789"
-                  className="w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-100"
-                />
-              </label>
-
-              <label className="flex flex-col gap-2 text-sm text-slate-700">
-                نوع المشروع
-                <select className="w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-slate-900 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-100">
-                  <option className="text-slate-900">موقع تعريفي</option>
-                  <option className="text-slate-900">متجر إلكتروني</option>
-                  <option className="text-slate-900">تطبيق ويب مخصص</option>
-                  <option className="text-slate-900">استشارة تقنية</option>
-                </select>
-              </label>
-
-              <label className="flex flex-col gap-2 text-sm text-slate-700">
-                وصف مختصر
-                <textarea
-                  rows={4}
-                  placeholder="أخبرنا بالنتيجة التي تريدها، والجمهور المستهدف، والموعد المتوقع للإطلاق"
-                  className="w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-100"
-                />
-              </label>
-
-              <button
-                type="submit"
-                className="inline-flex items-center justify-center gap-2 w-full md:w-auto rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 px-6 py-3 font-semibold text-white shadow-lg shadow-cyan-500/25 transition hover:scale-[1.01]">
-                <Send size={18} />
-                أرسل الرسالة
-              </button>
-            </form>
-          </motion.div>
-
-          <motion.div
-            initial={{opacity: 0, x: -30}}
-            whileInView={{opacity: 1, x: 0}}
-            viewport={{once: true}}
-            transition={{duration: 0.7}}
-            className="space-y-6">
-            <div className="rounded-3xl bg-white border border-slate-200 p-6 shadow-[0_15px_40px_rgba(15,23,42,0.08)]">
-              <p className="text-sm font-semibold text-cyan-600 mb-3">
-                كيف يمكننا المساعدة؟
-              </p>
-              <ul
-                className="space-y-3 text-slate-700 leading-relaxed"
-                style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
-                <li>• بناء موقع متكامل سريع وآمن.</li>
-                <li>• تحسين تجربة المستخدم وواجهة الاستخدام.</li>
-                <li>• دمج أنظمة الدفع والشحن وتتبع الطلبات.</li>
-                <li>• دعم فني مستمر وتحديثات دورية.</li>
-              </ul>
-            </div>
-
-            <div className="rounded-3xl bg-gradient-to-r from-indigo-500/10 via-cyan-400/10 to-teal-400/10 border border-slate-200 p-6 backdrop-blur">
-              <h3 className="text-2xl font-black mb-3 text-slate-900">
-                لماذا تروفوليو؟
-              </h3>
-              <p className="text-slate-700 leading-relaxed mb-4">
-                نستخدم أحدث التقنيات لتسليم مشاريع قابلة للتوسع، مع عمليات واضحة
-                وتسليم في الوقت المحدد.
-              </p>
-              <div className="grid grid-cols-2 gap-3 text-sm text-slate-800">
-                <div className="rounded-xl bg-white border border-slate-200 px-3 py-2 shadow-sm">
-                  سرعة تنفيذ عالية
-                </div>
-                <div className="rounded-xl bg-white border border-slate-200 px-3 py-2 shadow-sm">
-                  تجربة مستخدم مميزة
-                </div>
-                <div className="rounded-xl bg-white border border-slate-200 px-3 py-2 shadow-sm">
-                  أمان وموثوقية
-                </div>
-                <div className="rounded-xl bg-white border border-slate-200 px-3 py-2 shadow-sm">
-                  دعم مستمر
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Social links */}
-      <section className="max-w-6xl mx-auto px-4 pb-16">
+      <section className="max-w-6xl mx-auto px-4 py-12 pb-16">
         <div className="mb-8 text-center">
           <p className="text-sm font-semibold text-cyan-600">وسائل التواصل</p>
           <h3 className="text-3xl md:text-4xl font-black mt-2 text-slate-900">

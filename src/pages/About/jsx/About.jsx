@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import "../css/About.css";
 
 export default function About() {
   return (
@@ -88,7 +87,7 @@ export default function About() {
             <motion.div
               initial={{opacity: 0, x: -50}}
               whileInView={{opacity: 1, x: 0}}
-              viewport={{once: true}}
+              viewport={{once: true, amount: 0}}
               transition={{duration: 0.8}}
               className="order-2 lg:order-1 bg-white rounded-3xl p-10 shadow-sm"
               dir="rtl">
@@ -96,7 +95,7 @@ export default function About() {
               <motion.div
                 initial={{opacity: 0, y: 20}}
                 whileInView={{opacity: 1, y: 0}}
-                viewport={{once: true}}
+                viewport={{once: true, amount: 0}}
                 transition={{delay: 0.2, duration: 0.5}}
                 className="inline-block mb-6">
                 <span
@@ -111,7 +110,7 @@ export default function About() {
               <motion.h2
                 initial={{opacity: 0, y: 20}}
                 whileInView={{opacity: 1, y: 0}}
-                viewport={{once: true}}
+                viewport={{once: true, amount: 0}}
                 transition={{duration: 0.8, delay: 0.1}}
                 className="text-4xl md:text-5xl font-black text-[#1b263b] mb-6 leading-tight"
                 style={{fontFamily: "KOGhorab-Regular, sans-serif"}}>
@@ -122,7 +121,7 @@ export default function About() {
               <motion.p
                 initial={{opacity: 0, y: 20}}
                 whileInView={{opacity: 1, y: 0}}
-                viewport={{once: true}}
+                viewport={{once: true, amount: 0}}
                 transition={{duration: 0.8, delay: 0.2}}
                 className="text-xl text-[#415a77] leading-relaxed mb-5"
                 style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
@@ -134,7 +133,7 @@ export default function About() {
               <motion.p
                 initial={{opacity: 0, y: 20}}
                 whileInView={{opacity: 1, y: 0}}
-                viewport={{once: true}}
+                viewport={{once: true, amount: 0}}
                 transition={{duration: 0.8, delay: 0.25}}
                 className="text-xl text-[#415a77] leading-relaxed mb-8"
                 style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
@@ -148,7 +147,7 @@ export default function About() {
             <motion.div
               initial={{opacity: 0, x: 50}}
               whileInView={{opacity: 1, x: 0}}
-              viewport={{once: true}}
+              viewport={{once: true, amount: 0}}
               transition={{duration: 0.8}}
               className="order-1 lg:order-2 relative">
               <div className="relative rounded-3xl overflow-hidden p-1">
@@ -205,7 +204,7 @@ export default function About() {
             <motion.div
               initial={{opacity: 0, x: -40}}
               whileInView={{opacity: 1, x: 0}}
-              viewport={{once: true}}
+              viewport={{once: true, amount: 0}}
               transition={{duration: 0.8}}
               className="relative bg-white/90 backdrop-blur-md border border-white/60 shadow-[0_20px_60px_rgba(15,23,42,0.08)] rounded-[28px] p-10 overflow-hidden"
               dir="rtl">
@@ -222,7 +221,7 @@ export default function About() {
                 <motion.span
                   initial={{opacity: 0, y: 10}}
                   whileInView={{opacity: 1, y: 0}}
-                  viewport={{once: true}}
+                  viewport={{once: true, amount: 0}}
                   transition={{delay: 0.15, duration: 0.5}}
                   className="px-4 py-2 rounded-full text-sm font-bold text-white bg-gradient-to-r from-[#0f172a] to-[#1e2a3a] shadow-md"
                   style={{fontFamily: "KOGhorab-Regular, sans-serif"}}>
@@ -236,7 +235,7 @@ export default function About() {
               <motion.h3
                 initial={{opacity: 0, y: 20}}
                 whileInView={{opacity: 1, y: 0}}
-                viewport={{once: true}}
+                viewport={{once: true, amount: 0}}
                 transition={{duration: 0.7, delay: 0.05}}
                 className="text-4xl md:text-5xl font-black text-[#1b263b] mb-6 leading-tight"
                 style={{fontFamily: "KOGhorab-Regular, sans-serif"}}>
@@ -246,7 +245,7 @@ export default function About() {
               <motion.div
                 initial={{opacity: 0, y: 20}}
                 whileInView={{opacity: 1, y: 0}}
-                viewport={{once: true}}
+                viewport={{once: true, amount: 0}}
                 transition={{duration: 0.8, delay: 0.15}}
                 className="space-y-4 text-lg md:text-xl text-[#415a77] leading-relaxed relative z-10"
                 style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
@@ -270,7 +269,7 @@ export default function About() {
             <motion.div
               initial={{opacity: 0, x: 40}}
               whileInView={{opacity: 1, x: 0}}
-              viewport={{once: true}}
+              viewport={{once: true, amount: 0}}
               transition={{duration: 0.8}}
               className="relative">
               <div

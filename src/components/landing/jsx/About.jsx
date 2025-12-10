@@ -1,11 +1,9 @@
-import { MotionButton } from "@/components/ui/MotionButton";
-import { motion } from "framer-motion";
+import {MotionButton} from "@/components/ui/MotionButton";
+import {motion} from "framer-motion";
 
 export default function About() {
   return (
-    <section
-      id="about"
-      className="w-full bg-[var(--bg-primary)] py-16 px-4">
+    <section id="about" className="w-full bg-[var(--bg-primary)] py-16 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* الصورة على اليمين */}
@@ -97,12 +95,7 @@ export default function About() {
               variant="blue"
               size="lg"
               style={{fontFamily: "KOGhorab-Regular, sans-serif"}}
-              onClick={() =>
-                window.scrollTo({
-                  top: document.getElementById("services")?.offsetTop || 0,
-                  behavior: "smooth",
-                })
-              }>
+              to="/about">
               نبذه عنا
               <svg
                 width="20"

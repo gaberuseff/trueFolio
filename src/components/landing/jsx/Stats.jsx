@@ -1,5 +1,5 @@
-import { MotionButton } from "@/components/ui/MotionButton";
-import { motion } from "framer-motion";
+import {MotionButton} from "@/components/ui/MotionButton";
+import {motion} from "framer-motion";
 
 export default function Stats() {
   const stats = [
@@ -106,38 +106,6 @@ export default function Stats() {
               الإبداع والخبرة لإنشاء حلول برمجية قوية وفعالة. هدفنا أن نكون
               شركاؤك الموثوقين في رحلة النمو والتطور نحو مستقبل رقمي مزدهر.
             </motion.p>
-
-            {/* زر CTA */}
-            <motion.div
-              initial={{opacity: 0, y: 20}}
-              whileInView={{opacity: 1, y: 0}}
-              viewport={{once: true}}
-              transition={{delay: 0.5, duration: 0.5}}>
-              <MotionButton
-                variant="blue"
-                size="lg"
-                style={{fontFamily: "KOGhorab-Regular, sans-serif"}}
-                onClick={() =>
-                  window.scrollTo({
-                    top: document.getElementById("about")?.offsetTop || 0,
-                    behavior: "smooth",
-                  })
-                }>
-                أعرف أكثر
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round">
-                  <polyline points="13 17 18 12 13 7" />
-                  <polyline points="6 17 11 12 6 7" />
-                </svg>
-              </MotionButton>
-            </motion.div>
           </motion.div>
         </div>
 

@@ -1,6 +1,6 @@
-import {motion} from "framer-motion";
-import {useState, useEffect} from "react";
-import {MotionButton} from "../../ui/MotionButton";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { MotionButton } from "../../ui/MotionButton";
 import "../css/Hero.css";
 
 export default function Hero() {
@@ -147,18 +147,18 @@ export default function Hero() {
             transition={{duration: 0.8, delay: 0.4}}
             className="flex gap-2 sm:gap-3 mb-4 sm:mb-6 flex-wrap justify-center">
             <MotionButton
-              to="/contact"
+              to="/signup"
               variant="blue"
               size="lg"
               style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
               ابدأ الآن
             </MotionButton>
             <MotionButton
-              to="/#portfolio"
+              to="/contact"
               variant="outline"
               size="lg"
               style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
-              أعمالنا
+              تواصل معنا
             </MotionButton>
           </motion.div>
 
@@ -187,7 +187,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Tools Icons Section */}
-          <motion.div
+          {/* <motion.div
             initial={{opacity: 0, y: 20}}
             whileInView={{opacity: 1, y: 0}}
             viewport={{once: true}}
@@ -231,7 +231,7 @@ export default function Hero() {
                 className="w-12 h-12 sm:w-14 sm:h-14 opacity-60 hover:opacity-100 transition-opacity filter grayscale"
               />
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>

@@ -7,9 +7,9 @@ import "../css/Header.css";
 
 const navLinks = [
   {label: "الصفحة الرئيسية", href: "/"},
-  {label: "أعمالنا", href: "/portfolio"},
   {label: "نبذة عنا", href: "/about"},
   {label: "تواصل معنا", href: "/contact"},
+  {label: "تسجيل", href: "/signup"},
 ];
 
 function Header() {
@@ -59,7 +59,7 @@ function Header() {
             {/* اللوجو - اليسار */}
             <Link to="/" className="flex items-center">
               <img
-                src="./src/assets/logo.png"
+                src="./logo.png"
                 alt="تروفوليو"
                 className="h-14 w-auto object-contain"
               />

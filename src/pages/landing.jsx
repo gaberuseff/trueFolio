@@ -1,8 +1,6 @@
-import React, {Suspense} from "react";
-import CTAbtns from "../components/landing/jsx/CTAbtns";
+import React, { Suspense } from "react";
 import Hero from "../components/landing/jsx/Hero";
 import SeoHead from "../components/SeoHead";
-import "./landing.css";
 const Services = React.lazy(() => import("../components/landing/jsx/Services"));
 const About = React.lazy(() => import("../components/landing/jsx/About"));
 const Portfolio = React.lazy(() =>
@@ -53,7 +51,6 @@ export default function Landing() {
           },
         ]}
       />
-      <CTAbtns />
 
       <Hero />
 
@@ -75,14 +72,14 @@ export default function Landing() {
         <About />
       </Suspense>
 
-      <Suspense
+      {/* <Suspense
         fallback={
           <div style={{padding: "2rem", textAlign: "center", color: "#999"}}>
             ...Loading Portfolio
           </div>
         }>
         <Portfolio />
-      </Suspense>
+      </Suspense> */}
 
       <Suspense
         fallback={

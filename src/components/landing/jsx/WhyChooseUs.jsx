@@ -99,32 +99,6 @@ export default function WhyChooseUs() {
               </motion.div>
             </AnimatePresence>
 
-            {/* زر CTA */}
-            <MotionButton
-              variant="blue"
-              size="lg"
-              style={{fontFamily: "KOGhorab-Regular, sans-serif"}}
-              onClick={() =>
-                window.scrollTo({
-                  top: document.getElementById("services")?.offsetTop || 0,
-                  behavior: "smooth",
-                })
-              }>
-              أعرف أكثر
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round">
-                <polyline points="13 17 18 12 13 7" />
-                <polyline points="6 17 11 12 6 7" />
-              </svg>
-            </MotionButton>
-
             {/* مؤشرات التنقل */}
             <div className="flex gap-2 mt-8 justify-end">
               {services.map((_, index) => (
