@@ -1,7 +1,10 @@
-import { motion } from "framer-motion";
-import { MotionButton } from "../../ui/MotionButton";
+import {motion} from "framer-motion";
+import {useState, useEffect} from "react";
+import {MotionButton} from "../../ui/MotionButton";
+import "../css/Hero.css";
 
 export default function Hero() {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const technologies = [
     {name: "JavaScript", icon: "JS"},
     {name: "CSS", icon: "CSS"},
@@ -42,13 +45,23 @@ export default function Hero() {
   return (
     <section className="w-full min-h-screen flex items-center justify-center py-8 sm:py-16 px-3 sm:px-4 md:px-6 bg-gray-50">
       <div className="w-full max-w-7xl relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl aspect-auto  md:aspect-[4/3]">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 z-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/hero.webp')",
-          }}
-        />
+        {/* Background Image - Load with priority */}
+        <picture className="absolute inset-0 z-0">
+          <source srcSet="/hero.webp" type="image/webp" />
+          <img
+            src="/hero.jpg"
+            alt="Hero Background"
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+            onLoad={() => setImageLoaded(true)}
+            style={{
+              opacity: imageLoaded ? 1 : 0,
+              transition: "opacity 0.3s ease-in-out",
+            }}
+          />
+        </picture>
 
         {/* Floating Elements - Hidden on mobile, visible on larger screens */}
         {floatingElements.map((element) => (
@@ -74,8 +87,14 @@ export default function Hero() {
           />
         ))}
 
-        {/* Content Container */}
-        <div className="relative z-10 min-h-screen sm:h-full flex flex-col items-center justify-center px-4 sm:px-8 py-12 sm:py-0">
+        {/* Content Container - Show only after image loads */}
+        <div
+          className="relative z-10 min-h-screen sm:h-full flex flex-col items-center justify-center px-4 sm:px-8 py-12 sm:py-0"
+          style={{
+            opacity: imageLoaded ? 1 : 0,
+            transition: "opacity 0.5s ease-in-out",
+            visibility: imageLoaded ? "visible" : "hidden",
+          }}>
           {/* Main Title */}
           <motion.div
             initial={{opacity: 0, y: 20}}

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { supabase } from "@/lib/supabase";
-import { useNavigate, Link } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {motion} from "framer-motion";
+import {supabase} from "@/lib/supabase";
+import {useNavigate, Link} from "react-router-dom";
 import {
   TrendingUp,
   DollarSign,
@@ -89,10 +89,10 @@ const StatCard = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-200"
-    >
+      initial={{opacity: 0, y: 20}}
+      animate={{opacity: 1, y: 0}}
+      className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 
+        dark:border-gray-700 hover:shadow-md transition-all duration-200">
       <div className="flex items-center justify-between">
         <div className="flex-1">
           <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
@@ -104,8 +104,7 @@ const StatCard = ({
         </div>
         <div
           className={`p-3 rounded-lg ${colorClasses[color]}`}
-          style={{ borderRadius: "15px" }}
-        >
+          style={{borderRadius: "15px"}}>
           <Icon className="w-6 h-6" />
         </div>
       </div>
@@ -114,7 +113,7 @@ const StatCard = ({
 };
 
 // Activity Item Component
-const ActivityItem = ({ activity }) => {
+const ActivityItem = ({activity}) => {
   const getActivityIcon = (type) => {
     const icons = {
       payment: DollarSign,
@@ -148,10 +147,9 @@ const ActivityItem = ({ activity }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="flex items-start gap-4 p-4 hover:bg-gray-50 dark:hover:bg-gray-750 rounded-lg transition-colors"
-    >
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      className="flex items-start gap-4 p-4 hover:bg-gray-50 dark:hover:bg-gray-750 rounded-lg transition-colors">
       <div className={`p-2 rounded-lg ${getActivityColor(activity.type)}`}>
         <Icon className="w-4 h-4" />
       </div>
@@ -179,7 +177,7 @@ const ActivityItem = ({ activity }) => {
 };
 
 // Notification Item Component
-const NotificationItem = ({ notification, onMarkAsRead }) => {
+const NotificationItem = ({notification, onMarkAsRead}) => {
   const getNotificationIcon = (type) => {
     const icons = {
       success: CheckCircle,
@@ -215,26 +213,27 @@ const NotificationItem = ({ notification, onMarkAsRead }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
       onClick={handleClick}
       className={`flex items-start gap-4 p-4 rounded-lg border-l-4 cursor-pointer transition-all ${
         notification.unread
           ? "bg-blue-50 dark:bg-blue-900/10 border-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/20"
           : "bg-gray-50 dark:bg-gray-800 border-transparent hover:bg-gray-100 dark:hover:bg-gray-750"
-      }`}
-    >
+      }`}>
       <div
-        className={`p-2 rounded-lg ${getNotificationColor(notification.type)}`}
-      >
+        className={`p-2 rounded-lg ${getNotificationColor(notification.type)}`}>
         <Icon className="w-4 h-4" />
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-2">
-          <div className="flex-1" style={{ borderRadius: "15px" }}>
+          <div className="flex-1" style={{borderRadius: "15px"}}>
             <p
-              className={`text-sm font-medium ${notification.unread ? "text-gray-900 dark:text-gray-100" : "text-gray-600 dark:text-gray-400"}`}
-            >
+              className={`text-sm font-medium ${
+                notification.unread
+                  ? "text-gray-900 dark:text-gray-100"
+                  : "text-gray-600 dark:text-gray-400"
+              }`}>
               {notification.title}
             </p>
             <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
@@ -254,13 +253,12 @@ const NotificationItem = ({ notification, onMarkAsRead }) => {
 };
 
 // Transaction Item Component
-const TransactionItem = ({ transaction }) => {
+const TransactionItem = ({transaction}) => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="flex items-center justify-between p-4 hover:bg-gray-50 dark:hover:bg-gray-750 rounded-lg transition-colors"
-    >
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      className="flex items-center justify-between p-4 hover:bg-gray-50 dark:hover:bg-gray-750 rounded-lg transition-colors">
       <div className="flex items-center gap-3">
         <div
           className={`p-2 rounded-lg ${
@@ -268,8 +266,7 @@ const TransactionItem = ({ transaction }) => {
               ? "text-green-600 bg-green-100 dark:text-green-400 dark:bg-green-900/20"
               : "text-red-600 bg-red-100 dark:text-red-400 dark:bg-red-900/20"
           }`}
-          style={{ borderRadius: "15px" }}
-        >
+          style={{borderRadius: "15px"}}>
           {transaction.type === "income" ? (
             <ArrowUpRight className="w-4 h-4" />
           ) : (
@@ -291,8 +288,7 @@ const TransactionItem = ({ transaction }) => {
             transaction.type === "income"
               ? "text-green-600 dark:text-green-400"
               : "text-red-600 dark:text-red-400"
-          }`}
-        >
+          }`}>
           {transaction.type === "income" ? "+" : "-"}${transaction.amount}
         </p>
         <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
@@ -317,14 +313,12 @@ const CollapsibleSection = ({
 
   return (
     <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden"
-    >
+      initial={{opacity: 0, y: 20}}
+      animate={{opacity: 1, y: 0}}
+      className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-6 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors"
-      >
+        className="w-full flex items-center justify-between p-6 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors">
         <div className="flex items-center gap-3">
           {isOpen ? (
             <ChevronUp className="w-5 h-5 text-gray-500" />
@@ -346,8 +340,7 @@ const CollapsibleSection = ({
           <Link
             to={to}
             onClick={(e) => e.stopPropagation()}
-            className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 text-sm font-medium"
-          >
+            className="flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 text-sm font-medium">
             {action.label}
             <ChevronRight className="w-4 h-4" />
           </Link>
@@ -356,12 +349,11 @@ const CollapsibleSection = ({
 
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.2 }}
-          className="px-6 pb-6"
-        >
+          initial={{opacity: 0, height: 0}}
+          animate={{opacity: 1, height: "auto"}}
+          exit={{opacity: 0, height: 0}}
+          transition={{duration: 0.2}}
+          className="px-6 pb-6">
           {children}
         </motion.div>
       )}
@@ -370,7 +362,7 @@ const CollapsibleSection = ({
 };
 
 // Project Progress Component
-const ProjectProgress = ({ projects }) => {
+const ProjectProgress = ({projects}) => {
   const navigate = useNavigate();
 
   const handleProjectClick = (projectId) => {
@@ -382,24 +374,22 @@ const ProjectProgress = ({ projects }) => {
       {projects.map((project, index) => (
         <motion.div
           key={project.id}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1 }}
+          initial={{opacity: 0, y: 10}}
+          animate={{opacity: 1, y: 0}}
+          transition={{delay: index * 0.1}}
           onClick={() => handleProjectClick(project.id)}
-          className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-750 cursor-pointer transition-colors"
-        >
+          className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-750 cursor-pointer transition-colors">
           <div className="flex items-center gap-3 flex-1">
             <div
               className={`w-3 h-3 rounded-full ${
                 project.status === "active"
                   ? "bg-green-500"
                   : project.status === "on_hold"
-                    ? "bg-yellow-500"
-                    : project.status === "completed"
-                      ? "bg-blue-500"
-                      : "bg-gray-500"
-              }`}
-            ></div>
+                  ? "bg-yellow-500"
+                  : project.status === "completed"
+                  ? "bg-blue-500"
+                  : "bg-gray-500"
+              }`}></div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
                 {project.name}
@@ -416,11 +406,10 @@ const ProjectProgress = ({ projects }) => {
                   project.progress < 30
                     ? "bg-red-500"
                     : project.progress < 70
-                      ? "bg-yellow-500"
-                      : "bg-green-500"
+                    ? "bg-yellow-500"
+                    : "bg-green-500"
                 }`}
-                style={{ width: `${project.progress}%` }}
-              ></div>
+                style={{width: `${project.progress}%`}}></div>
             </div>
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300 w-8">
               {project.progress}%
@@ -433,12 +422,11 @@ const ProjectProgress = ({ projects }) => {
 };
 
 // Show More Button Component
-const ShowMoreButton = ({ onClick, loading = false }) => (
+const ShowMoreButton = ({onClick, loading = false}) => (
   <button
     onClick={onClick}
     disabled={loading}
-    className="w-full py-3 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-  >
+    className="w-full py-3 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
     {loading ? (
       <div className="flex items-center justify-center gap-2">
         <div className="w-4 h-4 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
@@ -475,7 +463,7 @@ const Overview = () => {
 
       // Get current user
       const {
-        data: { user },
+        data: {user},
       } = await supabase.auth.getUser();
       if (!user) throw new Error("User not authenticated");
 
@@ -491,7 +479,7 @@ const Overview = () => {
           .from("project")
           .select("*")
           .eq("client_id", user.id)
-          .order("created_at", { ascending: false })
+          .order("created_at", {ascending: false})
           .limit(4),
 
         // Transactions
@@ -499,7 +487,7 @@ const Overview = () => {
           .from("transactions")
           .select("*")
           .eq("client_id", user.id)
-          .order("created_at", { ascending: false })
+          .order("created_at", {ascending: false})
           .limit(limits.transactions),
 
         // Activities
@@ -507,7 +495,7 @@ const Overview = () => {
           .from("activities")
           .select("*")
           .eq("client_id", user.id)
-          .order("created_at", { ascending: false })
+          .order("created_at", {ascending: false})
           .limit(limits.activities),
 
         // Notifications
@@ -515,7 +503,7 @@ const Overview = () => {
           .from("notifications")
           .select("*")
           .eq("client_id", user.id)
-          .order("created_at", { ascending: false })
+          .order("created_at", {ascending: false})
           .limit(limits.notifications),
       ]);
 
@@ -537,10 +525,10 @@ const Overview = () => {
       // Calculate stats
       const totalProjects = projects.length;
       const activeProjects = projects.filter(
-        (p) => p.status === "active" || p.status === "in_progress",
+        (p) => p.status === "active" || p.status === "in_progress"
       ).length;
       const completedProjects = projects.filter(
-        (p) => p.status === "completed",
+        (p) => p.status === "completed"
       ).length;
 
       // Calculate total revenue from completed transactions
@@ -608,9 +596,9 @@ const Overview = () => {
 
   const markNotificationAsRead = async (notificationId) => {
     try {
-      const { error } = await supabase
+      const {error} = await supabase
         .from("notifications")
-        .update({ unread: false })
+        .update({unread: false})
         .eq("id", notificationId);
 
       if (error) throw error;
@@ -620,8 +608,8 @@ const Overview = () => {
         ...prev,
         notifications: prev.notifications.map((notification) =>
           notification.id === notificationId
-            ? { ...notification, unread: false }
-            : notification,
+            ? {...notification, unread: false}
+            : notification
         ),
       }));
     } catch (err) {
@@ -630,7 +618,7 @@ const Overview = () => {
   };
 
   const loadMore = async (type) => {
-    setLoadingMore((prev) => ({ ...prev, [type]: true }));
+    setLoadingMore((prev) => ({...prev, [type]: true}));
 
     let newLimit;
     switch (type) {
@@ -659,7 +647,7 @@ const Overview = () => {
     } catch (err) {
       console.error(`Error loading more ${type}:`, err);
     } finally {
-      setLoadingMore((prev) => ({ ...prev, [type]: false }));
+      setLoadingMore((prev) => ({...prev, [type]: false}));
     }
   };
 
@@ -805,8 +793,8 @@ const Overview = () => {
 
   if (loading) {
     return (
-    <>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 ml-10">
+      <>
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 ml-10">
           <div className="max-w-7xl mx-auto">
             <div className="animate-pulse">
               <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/4 mb-6"></div>
@@ -814,8 +802,7 @@ const Overview = () => {
                 {[...Array(3)].map((_, i) => (
                   <div
                     key={i}
-                    className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700"
-                  >
+                    className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
                     <div className="flex items-center justify-between">
                       <div className="space-y-2 flex-1">
                         <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
@@ -848,8 +835,7 @@ const Overview = () => {
             <p className="text-gray-600 dark:text-gray-400 mb-6">{error}</p>
             <button
               onClick={() => window.location.reload()}
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
               Retry
             </button>
           </div>
@@ -860,7 +846,6 @@ const Overview = () => {
 
   return (
     <>
-      
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 sm:p-6 ml-10">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -913,16 +898,14 @@ const Overview = () => {
             {/* Left Column */}
             <div
               className="lg:col-span-2 space-y-8"
-              style={{ borderRadius: "15px" }}
-            >
+              style={{borderRadius: "15px"}}>
               {/* Recent Projects */}
               <CollapsibleSection
                 title="Recent Projects"
                 subtitle="Latest projects and their progress"
-                action={{ label: "View all projects" }}
+                action={{label: "View all projects"}}
                 to="/projects"
-                defaultOpen={true}
-              >
+                defaultOpen={true}>
                 <ProjectProgress projects={data.recentProjects} />
               </CollapsibleSection>
 
@@ -930,10 +913,9 @@ const Overview = () => {
               <CollapsibleSection
                 title="Recent Transactions"
                 subtitle="Latest financial activities"
-                action={{ label: "View all projects" }}
+                action={{label: "View all projects"}}
                 to="/billing"
-                defaultOpen={true}
-              >
+                defaultOpen={true}>
                 <div className="space-y-2">
                   {data.recentTransactions.map((transaction) => (
                     <TransactionItem
@@ -959,8 +941,7 @@ const Overview = () => {
               <CollapsibleSection
                 title="Notifications"
                 subtitle="Latest updates and alerts"
-                defaultOpen={true}
-              >
+                defaultOpen={true}>
                 <div className="space-y-3 max-h-96 overflow-y-auto">
                   {data.notifications.map((notification) => (
                     <NotificationItem
@@ -984,8 +965,7 @@ const Overview = () => {
               <CollapsibleSection
                 title="Recent Activity"
                 subtitle="What's happening in your account"
-                defaultOpen={true}
-              >
+                defaultOpen={true}>
                 <div className="space-y-1 max-h-96 overflow-y-auto">
                   {data.recentActivities.map((activity) => (
                     <ActivityItem key={activity.id} activity={activity} />

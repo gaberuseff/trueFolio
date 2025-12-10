@@ -1,5 +1,5 @@
-import {Suspense, lazy} from "react";
-import {BrowserRouter, Route, Routes, useLocation} from "react-router-dom";
+import { Suspense, lazy } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import ScrollStack from "./components/bits/jsx/test";
 import CursorFollower from "./components/CursorFollower";
 import PublicLayout from "./layouts/PublicLayout";
@@ -10,6 +10,7 @@ import ConfirmationSuccess from "./pages/login/jsx/done";
 import EmailVerificationPage from "./pages/login/jsx/EmailVerificationPage";
 import Login from "./pages/login/jsx/login";
 import Signup from "./pages/login/jsx/signup";
+import PortfolioPage from "./pages/Portfolio";
 import Marketing from "./pages/Services/jsx/Marketing";
 import MobileApp from "./pages/Services/jsx/MobileApp";
 import SEO from "./pages/Services/jsx/SEO";
@@ -65,6 +66,7 @@ function Shell() {
       <Routes>
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Landing />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/services/webdesign" element={<WebDesign />} />
           <Route path="/services/mobileapp" element={<MobileApp />} />
           <Route path="/services/marketing" element={<Marketing />} />

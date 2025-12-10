@@ -7,9 +7,9 @@ import "../css/Header.css";
 
 const navLinks = [
   {label: "الصفحة الرئيسية", href: "/"},
-  {label: "أعمالنا", href: "/#portfolio"},
+  {label: "أعمالنا", href: "/portfolio"},
   {label: "نبذة عنا", href: "/about"},
-  {label: "خدماتنا", href: "/services"},
+  {label: "تواصل معنا", href: "/contact"},
 ];
 
 function Header() {

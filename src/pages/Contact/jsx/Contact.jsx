@@ -1,217 +1,359 @@
-import React from 'react'
-import '../css/Contact.css'
-import { FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaClock } from 'react-icons/fa'
-import Dither from '../../../components/bits/jsx/Dither'
-import ElectricBorder from '../../../components/bits/jsx/ElectricBorder'
-import Header from '../../../components/landing/jsx/Header'
-import CTA from '../../../components/landing/jsx/CTAbtns'
+import {motion} from "framer-motion";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+  Twitter,
+  Clock4,
+  Send,
+} from "lucide-react";
+
+const cardVariants = {
+  hidden: {opacity: 0, y: 24},
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {delay: 0.1 * i, duration: 0.6, ease: "easeOut"},
+  }),
+};
+
 export default function Contact() {
-  const contactMethods = [
-    {
-      icon: <FaWhatsapp />,
-      title: 'WhatsApp',
-      description: 'Chat with us instantly',
-      info: '+201158954215',
-      action: () => window.open("https://wa.me/201158954215", "_blank"),
-      buttonText: 'Start Chat',
-      color: '#25D366'
-    },
-    {
-      icon: <FaPhone />,
-      title: 'Phone Call',
-      description: 'Speak directly with our team',
-      info: '+201158954215',
-      action: () => window.open("tel:+201158954215", "_blank"),
-      buttonText: 'Call Now',
-      color: '#667eea'
-    },
-    {
-      icon: <FaEnvelope />,
-      title: 'Email',
-      description: 'Send us a detailed message',
-      info: 'info@company.com',
-      action: () => window.open("mailto:info@company.com", "_blank"),
-      buttonText: 'Send Email',
-      color: '#EA4335'
-    }
-  ];
-
-  const socialMedia = [
-    {
-      icon: <FaFacebook />,
-      name: 'Facebook',
-      username: '@ourcompany',
-      url: 'https://facebook.com/ourcompany',
-      color: '#1877F2'
-    },
-    {
-      icon: <FaTwitter />,
-      name: 'Twitter',
-      username: '@ourcompany',
-      url: 'https://twitter.com/ourcompany',
-      color: '#1DA1F2'
-    },
-    {
-      icon: <FaLinkedin />,
-      name: 'LinkedIn',
-      username: '/company',
-      url: 'https://linkedin.com/company',
-      color: '#0077B5'
-    },
-    {
-      icon: <FaInstagram />,
-      name: 'Instagram',
-      username: '@ourcompany',
-      url: 'https://instagram.com/ourcompany',
-      color: '#E4405F'
-    }
-  ];
-
-  const businessHours = [
-    { day: 'Monday - Friday', hours: '9:00 AM - 6:00 PM' },
-    { day: 'Saturday', hours: '10:00 AM - 4:00 PM' },
-    { day: 'Sunday', hours: 'Closed' }
-  ];
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
-    <>
-      <Header />
-      <CTA />
-    <div className='service-page web-design-page'>
-      {/* Hero Section */}
-      <div className='service-hero-WebDesign'>
-        <div className='service-hero-content-WebDesign'>
-          <div className='service-hero-background'>
-            <Dither
-              waveColor={[0.5, 0.5, 0.5]}
-              disableAnimation={false}
-              enableMouseInteraction={true}
-              mouseRadius={0.3}
-              colorNum={4}
-              waveAmplitude={0.3}
-              waveFrequency={3}
-              waveSpeed={0.05}
-            />
+    <div
+      className="relative min-h-screen bg-[#f8f9fa] text-slate-900"
+      dir="rtl">
+      {/* Hero */}
+      <section className="relative w-full h-[50vh] flex items-center justify-center py-0 px-4 overflow-hidden bg-gradient-to-b from-[#2c3e50] via-[#1b263b] to-[#0f172a]">
+        <div className="absolute top-[-160px] left-[-90px] w-[520px] h-[520px] rounded-full bg-gradient-to-br from-cyan-400/35 via-blue-500/25 to-purple-500/25 blur-3xl" />
+        <div className="absolute bottom-[-180px] right-[-100px] w-[480px] h-[480px] rounded-full bg-gradient-to-tr from-indigo-500/25 via-sky-400/20 to-emerald-400/15 blur-3xl" />
 
-            
-          </div>
-          <h1 className='contact-title'>Get In Touch</h1>
-          <p className='contact-subtitle'>
-            We're here to help you with your digital needs. Choose your preferred way to reach us.
-          </p>
-          <div className='service-cta-WebDesign'>
+        <div className="max-w-6xl mx-auto relative z-10 text-center text-white">
+          <motion.h1
+            initial={{opacity: 0, y: 20}}
+            animate={{opacity: 1, y: 0}}
+            transition={{duration: 0.7}}
+            className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 drop-shadow-md"
+            style={{fontFamily: "Zaatar-Regular, sans-serif"}}>
+            تواصل معنا
+          </motion.h1>
 
-              <button 
-                className='cta-button-WebDesign'
-                onClick={() => window.open("https://wa.me/201158954215", "_blank")}
-              >
-                <ElectricBorder
-                  color="#6333ff"
-                  speed={1}
-                  chaos={0.5}
-                  thickness={2}
-                  style={{ borderRadius: 999 }}
-                >
-                  <div className='cta-button-text'>
-                    Request a Price
-                  </div>
+          <motion.p
+            initial={{opacity: 0, y: 20}}
+            animate={{opacity: 1, y: 0}}
+            transition={{duration: 0.8, delay: 0.1}}
+            className="text-lg md:text-xl text-slate-200/80 max-w-3xl mx-auto leading-relaxed"
+            style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
+            نرافقك في كل خطوة. سواء كنت تبحث عن استشارة أو عرض سعر أو شراكة
+            طويلة المدى، فريقنا جاهز للاستماع والرد بسرعة.
+          </motion.p>
 
-                  </ElectricBorder>
-              </button>
-
-          </div>
-        </div>
-        
-      </div>
-
-      {/* Contact Methods Section */}
-      <section className='contact-methods-section'>
-        <div className='container'>
-          <div className='section-header'>
-            <h2>Contact Methods</h2>
-            <p>Multiple ways to connect with our team</p>
-          </div>
-          <div className='contact-methods-grid'>
-            {contactMethods.map((method, index) => (
-              <div key={index} className='contact-method-card'>
-                <div 
-                  className='method-icon'
-                  style={{ color: method.color }}
-                >
-                  {method.icon}
-                </div>
-                <h3>{method.title}</h3>
-                <p className='method-description'>{method.description}</p>
-                <p className='method-info'>{method.info}</p>
-                <button 
-                  className='method-button'
-                  onClick={method.action}
-                  style={{ backgroundColor: method.color }}
-                >
-                  {method.buttonText}
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Social Media Section */}
-      <section className='social-media-section'>
-        <div className='container'>
-          <div className='section-header'>
-            <h2>Follow Us</h2>
-            <p>Stay updated with our latest news and updates</p>
-          </div>
-          <div className='social-media-grid'>
-            {socialMedia.map((social, index) => (
-              <div 
-                key={index} 
-                className='social-card'
-                onClick={() => window.open(social.url, "_blank")}
-              >
-                <div 
-                  className='social-icon'
-                  style={{ backgroundColor: social.color }}
-                >
-                  {social.icon}
-                </div>
-                <div className='social-info'>
-                  <h4>{social.name}</h4>
-                  <span>{social.username}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Action Section */}
-      {/* <section className='quick-action-section'>
-        <div className='container'>
-          <div className='quick-action-content'>
-            <h2>Need Immediate Assistance?</h2>
-            <p>Our team is ready to help you with your project</p>
-            <div className='action-buttons'>
-              <button 
-                className='action-button whatsapp'
-                onClick={() => window.open("https://wa.me/201158954215", "_blank")}
-              >
-                <FaWhatsapp className='button-icon' />
-                Message on WhatsApp
-              </button>
-              <button 
-                className='action-button phone'
-                onClick={() => window.open("tel:+201158954215", "_blank")}
-              >
-                <FaPhone className='button-icon' />
-                Call Us Now
-              </button>
+          <motion.div
+            animate={{y: [0, 12, 0]}}
+            transition={{duration: 2, repeat: Infinity}}
+            className="mt-10 flex justify-center">
+            <div className="w-9 h-14 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
+              <motion.div
+                animate={{y: [0, 10, 0]}}
+                transition={{duration: 1.8, repeat: Infinity}}
+                className="w-1 h-3 bg-white rounded-full"
+              />
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section> */}
+
+        <svg
+          className="absolute bottom-0 left-0 w-full"
+          style={{height: "90px"}}
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="contactWave" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop
+                offset="0%"
+                style={{stopColor: "#ffffff", stopOpacity: 1}}
+              />
+              <stop
+                offset="100%"
+                style={{stopColor: "#ffffff", stopOpacity: 1}}
+              />
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#contactWave)"
+            d="M0,30L48,35C96,40,192,50,288,50C384,50,480,40,576,38C672,37,768,43,864,45C960,47,1056,43,1152,42C1248,40,1344,40,1392,40L1440,40L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
+          />
+        </svg>
+      </section>
+
+      {/* Contact methods */}
+      <section className="relative max-w-6xl mx-auto px-4 -mt-12 z-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {[
+            {
+              icon: Mail,
+              title: "البريد الإلكتروني",
+              value: "hello@truefolio.com",
+              href: "mailto:hello@truefolio.com",
+              color: "from-rose-400 to-red-500",
+            },
+            {
+              icon: Phone,
+              title: "الهاتف",
+              value: "0123456789",
+              href: "tel:0123456789",
+              color: "from-indigo-400 to-blue-500",
+            },
+            {
+              icon: MapPin,
+              title: "الموقع",
+              value: "القاهرة - مصر",
+              href: "https://maps.google.com",
+              color: "from-emerald-400 to-teal-500",
+            },
+            {
+              icon: Clock4,
+              title: "ساعات العمل",
+              value: "09:00 - 18:00 (GMT+2)",
+              href: null,
+              color: "from-amber-400 to-orange-500",
+            },
+          ].map((item, idx) => (
+            <motion.div
+              key={item.title}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{once: true}}
+              custom={idx}
+              className="group relative overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-[0_15px_35px_rgba(15,23,42,0.08)] p-5">
+              <div
+                className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${item.color} blur-3xl`}
+              />
+              <div className="relative flex items-center gap-4">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-900 text-white shadow-lg">
+                  <item.icon size={24} />
+                </span>
+                <div>
+                  <p className="text-sm text-slate-500">{item.title}</p>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      className="text-lg font-semibold text-slate-900 hover:underline decoration-2 decoration-slate-300">
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="text-lg font-semibold text-slate-900">
+                      {item.value}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Form + info */}
+      <section className="max-w-6xl mx-auto px-4 py-14 md:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+          <motion.div
+            initial={{opacity: 0, x: 30}}
+            whileInView={{opacity: 1, x: 0}}
+            viewport={{once: true}}
+            transition={{duration: 0.7}}
+            className="relative overflow-hidden rounded-3xl bg-white border border-slate-200 p-8 md:p-10 shadow-[0_20px_50px_rgba(15,23,42,0.08)]">
+            <div className="absolute -top-12 -left-16 w-56 h-56 rounded-full bg-gradient-to-br from-blue-500/10 to-cyan-400/5 blur-3xl" />
+            <div className="absolute -bottom-10 -right-10 w-48 h-48 rounded-full bg-gradient-to-tr from-purple-500/10 to-pink-400/5 blur-3xl" />
+
+            <div className="relative z-10 space-y-3 mb-8" dir="rtl">
+              <p className="text-sm font-semibold text-cyan-600">دعنا نبدأ</p>
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900">
+                أخبرنا عن مشروعك
+              </h2>
+              <p className="text-slate-600 leading-relaxed">
+                أرسل لنا تفاصيل احتياجك وسيتواصل معك أحد المختصين خلال 24 ساعة
+                لتقديم عرض تفصيلي وخطة تنفيذ واضحة.
+              </p>
+            </div>
+
+            <form className="relative z-10 space-y-4" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <label className="flex flex-col gap-2 text-sm text-slate-700">
+                  الاسم الكامل
+                  <input
+                    required
+                    type="text"
+                    placeholder="أدخل اسمك"
+                    className="w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-100"
+                  />
+                </label>
+                <label className="flex flex-col gap-2 text-sm text-slate-700">
+                  البريد الإلكتروني
+                  <input
+                    required
+                    type="email"
+                    placeholder="you@example.com"
+                    className="w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-100"
+                  />
+                </label>
+              </div>
+
+              <label className="flex flex-col gap-2 text-sm text-slate-700">
+                رقم الهاتف
+                <input
+                  type="tel"
+                  placeholder="0123 456 789"
+                  className="w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-100"
+                />
+              </label>
+
+              <label className="flex flex-col gap-2 text-sm text-slate-700">
+                نوع المشروع
+                <select className="w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-slate-900 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-100">
+                  <option className="text-slate-900">موقع تعريفي</option>
+                  <option className="text-slate-900">متجر إلكتروني</option>
+                  <option className="text-slate-900">تطبيق ويب مخصص</option>
+                  <option className="text-slate-900">استشارة تقنية</option>
+                </select>
+              </label>
+
+              <label className="flex flex-col gap-2 text-sm text-slate-700">
+                وصف مختصر
+                <textarea
+                  rows={4}
+                  placeholder="أخبرنا بالنتيجة التي تريدها، والجمهور المستهدف، والموعد المتوقع للإطلاق"
+                  className="w-full rounded-xl bg-white border border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-100"
+                />
+              </label>
+
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center gap-2 w-full md:w-auto rounded-xl bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 px-6 py-3 font-semibold text-white shadow-lg shadow-cyan-500/25 transition hover:scale-[1.01]">
+                <Send size={18} />
+                أرسل الرسالة
+              </button>
+            </form>
+          </motion.div>
+
+          <motion.div
+            initial={{opacity: 0, x: -30}}
+            whileInView={{opacity: 1, x: 0}}
+            viewport={{once: true}}
+            transition={{duration: 0.7}}
+            className="space-y-6">
+            <div className="rounded-3xl bg-white border border-slate-200 p-6 shadow-[0_15px_40px_rgba(15,23,42,0.08)]">
+              <p className="text-sm font-semibold text-cyan-600 mb-3">
+                كيف يمكننا المساعدة؟
+              </p>
+              <ul
+                className="space-y-3 text-slate-700 leading-relaxed"
+                style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
+                <li>• بناء موقع متكامل سريع وآمن.</li>
+                <li>• تحسين تجربة المستخدم وواجهة الاستخدام.</li>
+                <li>• دمج أنظمة الدفع والشحن وتتبع الطلبات.</li>
+                <li>• دعم فني مستمر وتحديثات دورية.</li>
+              </ul>
+            </div>
+
+            <div className="rounded-3xl bg-gradient-to-r from-indigo-500/10 via-cyan-400/10 to-teal-400/10 border border-slate-200 p-6 backdrop-blur">
+              <h3 className="text-2xl font-black mb-3 text-slate-900">
+                لماذا تروفوليو؟
+              </h3>
+              <p className="text-slate-700 leading-relaxed mb-4">
+                نستخدم أحدث التقنيات لتسليم مشاريع قابلة للتوسع، مع عمليات واضحة
+                وتسليم في الوقت المحدد.
+              </p>
+              <div className="grid grid-cols-2 gap-3 text-sm text-slate-800">
+                <div className="rounded-xl bg-white border border-slate-200 px-3 py-2 shadow-sm">
+                  سرعة تنفيذ عالية
+                </div>
+                <div className="rounded-xl bg-white border border-slate-200 px-3 py-2 shadow-sm">
+                  تجربة مستخدم مميزة
+                </div>
+                <div className="rounded-xl bg-white border border-slate-200 px-3 py-2 shadow-sm">
+                  أمان وموثوقية
+                </div>
+                <div className="rounded-xl bg-white border border-slate-200 px-3 py-2 shadow-sm">
+                  دعم مستمر
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Social links */}
+      <section className="max-w-6xl mx-auto px-4 pb-16">
+        <div className="mb-8 text-center">
+          <p className="text-sm font-semibold text-cyan-600">وسائل التواصل</p>
+          <h3 className="text-3xl md:text-4xl font-black mt-2 text-slate-900">
+            ابق على اتصال معنا
+          </h3>
+          <p className="text-slate-600 mt-3 max-w-2xl mx-auto">
+            تابع أحدث الإصدارات، القصص، وفرص التعاون عبر قنواتنا الاجتماعية.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            {
+              label: "Facebook",
+              icon: Facebook,
+              href: "https://facebook.com",
+              bg: "bg-[#1877F2]",
+            },
+            {
+              label: "Twitter",
+              icon: Twitter,
+              href: "https://twitter.com",
+              bg: "bg-[#1DA1F2]",
+            },
+            {
+              label: "Instagram",
+              icon: Instagram,
+              href: "https://instagram.com",
+              bg: "bg-[#E4405F]",
+            },
+            {
+              label: "LinkedIn",
+              icon: Linkedin,
+              href: "https://linkedin.com",
+              bg: "bg-[#0077B5]",
+            },
+          ].map((item, idx) => (
+            <motion.a
+              key={item.label}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{once: true}}
+              custom={idx}
+              className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 flex items-center gap-4 shadow-[0_15px_40px_rgba(15,23,42,0.08)] transition hover:translate-y-[-4px]">
+              <span
+                className={`${item.bg} rounded-xl w-12 h-12 flex items-center justify-center text-white shadow-lg shadow-black/20`}>
+                <item.icon size={22} />
+              </span>
+              <div>
+                <p className="text-sm text-slate-500">تابعنا على</p>
+                <p className="text-lg font-semibold text-slate-900">
+                  {item.label}
+                </p>
+              </div>
+            </motion.a>
+          ))}
+        </div>
+      </section>
     </div>
-      </>
-  )
+  );
 }
