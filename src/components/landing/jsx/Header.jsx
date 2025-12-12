@@ -1,9 +1,8 @@
 import {AnimatePresence, motion} from "framer-motion";
-import {Menu, TextAlignEnd, X} from "lucide-react";
-import {useState} from "react";
-import {Link} from "react-router-dom";
+import {X} from "lucide-react";
+import {useEffect, useState} from "react";
+import {Link, useLocation} from "react-router-dom";
 import {MotionButton} from "../../ui/MotionButton";
-import "../css/Header.css";
 
 const navLinks = [
   {label: "الصفحة الرئيسية", href: "/"},
@@ -14,152 +13,199 @@ const navLinks = [
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    closeMenu();
+  }, [location]);
+
+  // Destructure motion components to satisfy the linter
+  const {header: MotionHeader, div: MotionDiv} = motion;
+
   return (
     <>
-      <header
-        className="fixed top-0 left-0 right-0 z-50 bg-white/40 
-          backdrop-blur-md shadow-sm w-full"
-        dir="rtl">
-        <div className="w-full px-4 py-4">
-          <div className="flex items-center justify-between">
-            {/* أيقونة القائمة - اليمين */}
-            <div className="flex items-center gap-4">
-              {/* أيقونة القائمة */}
-              <button
-                onClick={toggleMenu}
-                className="w-11 h-11 flex items-center justify-center rounded-full border
-                  border-[#1b263b8e] hover:bg-gray-100 transition-colors"
-                aria-label="القائمة">
-                {isMenuOpen ? (
-                  <X className="w-6 h-6 text-[#1b263b]" />
-                ) : (
-                  <TextAlignEnd className="w-6 h-6 text-[#1b263b]" />
-                )}
-              </button>
+      {/* Added w-full max-w-full to prevent overflow */}
+      <MotionHeader
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full max-w-full ${
+          scrolled
+            ? "bg-white/90 backdrop-blur-md shadow-md py-2"
+            : "bg-white/40 backdrop-blur-md shadow-sm py-3 sm:py-4"
+        }`}
+        dir="rtl"
+        initial={{y: -100}}
+        animate={{y: 0}}
+        transition={{duration: 0.5}}>
+        {/* Changed container to use proper responsive classes */}
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex-shrink-0 flex items-center">
+              <Link to="/" className="flex items-center">
+                <img
+                  src="./logo.png"
+                  alt="تروفوليو"
+                  className="h-8 sm:h-10 md:h-12 w-auto object-contain"
+                />
+              </Link>
             </div>
 
-            {/* الروابط في المنتصف - مخفية على الشاشات الصغيرة */}
-            <nav className="hidden lg:flex items-center gap-8">
+            {/* Desktop Navigation - Hidden on mobile */}
+            <nav className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="text-[#1b263b] hover:text-[var(--gradient-blue-end)] transition-colors font-medium text-lg"
+                  className={`px-3 py-2 rounded-lg text-[#1b263b] hover:bg-gray-100 transition-all font-medium text-sm ${
+                    location.pathname === link.href
+                      ? "bg-gray-100 font-bold"
+                      : ""
+                  }`}
                   style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
                   {link.label}
                 </Link>
               ))}
             </nav>
 
-            {/* اللوجو - اليسار */}
-            <Link to="/" className="flex items-center">
-              <img
-                src="./logo.png"
-                alt="تروفوليو"
-                className="h-14 w-auto object-contain"
-              />
-            </Link>
+            {/* Contact Button - Hidden on mobile */}
+            <div className="hidden md:block">
+              <MotionButton
+                to="/contact"
+                variant="blue"
+                size="sm"
+                className="text-xs sm:text-sm"
+                style={{fontFamily: "KOGhorab-Regular, sans-serif"}}>
+                تواصل معنا
+              </MotionButton>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={toggleMenu}
+                className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:bg-gray-100 transition-colors"
+                aria-label="القائمة">
+                {isMenuOpen ? (
+                  <X className="w-5 h-5 text-[#1b263b]" />
+                ) : (
+                  // Custom two-line menu icon with bottom line longer, left-aligned
+                  <div className="flex flex-col items-start justify-center space-y-1 pl-0.5">
+                    <div className="w-3 h-0.5 bg-[#1b263b] rounded-full"></div>
+                    <div className="w-4 h-0.5 bg-[#1b263b] rounded-full"></div>
+                  </div>
+                )}
+              </button>
+            </div>
           </div>
         </div>
-      </header>
+      </MotionHeader>
 
-      {/* القائمة الجانبية */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <>
             {/* Overlay */}
-            <motion.div
+            <MotionDiv
               initial={{opacity: 0}}
               animate={{opacity: 1}}
               exit={{opacity: 0}}
-              transition={{duration: 0.3}}
+              transition={{duration: 0.2}}
               className="fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
-              onClick={toggleMenu}
+              onClick={closeMenu}
             />
 
-            {/* Side Menu */}
-            <motion.div
+            {/* Side Menu - Fixed positioning issues */}
+            <MotionDiv
               initial={{x: "100%"}}
               animate={{x: 0}}
               exit={{x: "100%"}}
               transition={{type: "spring", damping: 25, stiffness: 200}}
-              className="fixed top-0 right-0 bottom-0 w-80 bg-white shadow-2xl z-50 overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 w-[280px] sm:w-80 bg-white shadow-2xl z-50 overflow-y-auto max-w-full"
               dir="rtl">
-              <div className="p-6">
-                {/* رأس القائمة */}
-                <div className="flex items-center justify-between mb-8">
+              <div className="p-5">
+                {/* Menu Header */}
+                <div className="flex items-center justify-between mb-8 mt-2">
                   <h2
-                    className="text-2xl font-bold text-[#1b263b]"
+                    className="text-xl font-bold text-[#1b263b]"
                     style={{fontFamily: "KOGhorab-Regular, sans-serif"}}>
                     القائمة
                   </h2>
                   <button
-                    onClick={toggleMenu}
-                    className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+                    onClick={closeMenu}
+                    className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors"
                     aria-label="إغلاق">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
+                    <X className="w-5 h-5" />
                   </button>
                 </div>
 
-                {/* روابط القائمة */}
-                <nav className="space-y-2">
+                {/* Menu Links */}
+                <nav className="space-y-1">
                   {navLinks.map((link, index) => (
                     <motion.div
                       key={link.href}
-                      initial={{opacity: 0, x: 50}}
+                      initial={{opacity: 0, x: 20}}
                       animate={{opacity: 1, x: 0}}
-                      transition={{delay: index * 0.1}}>
+                      transition={{delay: index * 0.05}}>
                       <Link
                         to={link.href}
-                        onClick={toggleMenu}
-                        className="block px-4 py-3 text-lg font-medium text-[#1b263b] hover:bg-gray-100 rounded-lg transition-colors"
-                        style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
+                        className={`block px-4 py-3 text-lg font-medium rounded-lg transition-colors ${
+                          location.pathname === link.href
+                            ? "bg-gray-100 text-[#1b263b] font-bold"
+                            : "text-[#1b263b] hover:bg-gray-50"
+                        }`}
+                        style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}
+                        onClick={closeMenu}>
                         {link.label}
                       </Link>
                     </motion.div>
                   ))}
                 </nav>
 
-                {/* زر تواصل معنا في القائمة */}
+                {/* Contact Button in Menu */}
                 <motion.div
                   initial={{opacity: 0, y: 20}}
                   animate={{opacity: 1, y: 0}}
-                  transition={{delay: 0.4}}
+                  transition={{delay: 0.3}}
                   className="mt-8">
                   <MotionButton
                     to="/contact"
                     variant="blue"
                     size="md"
                     className="w-full"
-                    onClick={toggleMenu}
+                    onClick={closeMenu}
                     style={{fontFamily: "KOGhorab-Regular, sans-serif"}}>
                     تواصل معنا
                   </MotionButton>
                 </motion.div>
               </div>
-            </motion.div>
+            </MotionDiv>
           </>
         )}
       </AnimatePresence>
 
-      {/* Spacer لتعويض الـ fixed header */}
-      <div className="h-20" />
+      {/* Spacer to compensate for fixed header - Adjusted height */}
+      <div className="h-16 sm:h-20" />
     </>
   );
 }

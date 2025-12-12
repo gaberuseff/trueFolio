@@ -10,7 +10,7 @@ import ConfirmationSuccess from "./pages/login/jsx/done";
 import EmailVerificationPage from "./pages/login/jsx/EmailVerificationPage";
 import Login from "./pages/login/jsx/login";
 import Signup from "./pages/login/jsx/signup";
-import PortfolioPage from "./pages/Portfolio";
+import PortfolioPage from "./pages/portfolio/jsx/Portfolio";
 import Marketing from "./pages/Services/jsx/Marketing";
 import MobileApp from "./pages/Services/jsx/MobileApp";
 import SEO from "./pages/Services/jsx/SEO";

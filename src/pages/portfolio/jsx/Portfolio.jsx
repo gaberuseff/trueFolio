@@ -1,21 +1,26 @@
 import {motion} from "framer-motion";
+import {useEffect} from "react";
 import PortfolioSection from "@/components/landing/jsx/Portfolio";
 
 export default function PortfolioPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {/* Page Title Section - Hero Style */}
       <section
-        className="w-full h-[50vh] flex items-center justify-center py-0 px-4 
-            bg-gradient-to-b from-[#2c3e50] via-[#1b263b] to-[#0f172a] relative overflow-visible">
+        className="w-full min-h-[50vh] md:h-[40vh] flex items-center justify-center py-12 md:py-0 px-4 
+            bg-gradient-to-b from-[#2c3e50] via-[#1b263b] to-[#0f172a] relative overflow-hidden">
         {/* Background Decorative Elements */}
         <motion.div
-          className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-500 rounded-full opacity-30 blur-3xl"
+          className="absolute top-[-80px] sm:top-0 right-5 sm:right-20 w-[200px] sm:w-96 h-[200px] sm:h-96 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-500 rounded-full opacity-30 blur-3xl"
           animate={{y: [0, 30, 0], x: [0, 20, 0]}}
           transition={{duration: 10, repeat: Infinity}}
         />
         <motion.div
-          className="absolute bottom-10 left-10 w-72 h-72 bg-gradient-to-br from-indigo-500 via-sky-400 to-emerald-400 rounded-full opacity-20 blur-3xl"
+          className="absolute bottom-[-100px] sm:bottom-10 left-2 sm:left-10 w-[150px] sm:w-72 h-[150px] sm:h-72 bg-gradient-to-br from-indigo-500 via-sky-400 to-emerald-400 rounded-full opacity-20 blur-3xl"
           animate={{y: [0, -30, 0], x: [0, -20, 0]}}
           transition={{duration: 12, repeat: Infinity}}
         />
@@ -23,7 +28,7 @@ export default function PortfolioPage() {
         <div className="max-w-7xl w-full relative z-10" dir="rtl">
           <div className="text-center">
             <h1
-              className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 drop-shadow-lg"
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold text-white mb-4 sm:mb-8 drop-shadow-lg"
               style={{fontFamily: "Zaatar-Regular, sans-serif"}}>
               أعمالنا
             </h1>
@@ -32,7 +37,7 @@ export default function PortfolioPage() {
               initial={{opacity: 1, y: 0}}
               animate={{opacity: 1, y: 0}}
               transition={{duration: 0.8, delay: 0.2}}
-              className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-12 leading-relaxed"
+              className="text-sm sm:text-base md:text-xl lg:text-2xl text-white/80 max-w-3xl mx-auto mb-6 sm:mb-12 leading-relaxed px-2"
               style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
               مجموعة مختارة من المشاريع التي أنجزناها لعملائنا، مع تركيز على
               الجودة، السرعة، وتجارب الاستخدام المميزة.

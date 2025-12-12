@@ -1,6 +1,7 @@
-import React, { Suspense } from "react";
+import React, {Suspense, useEffect} from "react";
 import Hero from "../components/landing/jsx/Hero";
 import SeoHead from "../components/SeoHead";
+
 const Services = React.lazy(() => import("../components/landing/jsx/Services"));
 const About = React.lazy(() => import("../components/landing/jsx/About"));
 const Portfolio = React.lazy(() =>
@@ -10,9 +11,41 @@ const Stats = React.lazy(() => import("../components/landing/jsx/Stats"));
 const WhyChooseUs = React.lazy(() =>
   import("../components/landing/jsx/WhyChooseUs")
 );
+const ContactForm = React.lazy(() =>
+  import("../components/landing/jsx/ContactForm")
+);
+
+const SectionFallback = ({text}) => (
+  <div className="py-10 text-center text-gray-500">{text}</div>
+);
+
+const LazySection = ({Component, fallbackText}) => (
+  <Suspense fallback={<SectionFallback text={fallbackText} />}>
+    <Component />
+  </Suspense>
+);
+
 export default function Landing() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const sections = [
+    {key: "services", Component: Services, fallback: "...Loading services"},
+    {key: "about", Component: About, fallback: "...Loading About Us"},
+    // {key: "portfolio", Component: Portfolio, fallback: "...Loading Portfolio"},
+    {key: "stats", Component: Stats, fallback: "...Loading Stats"},
+    {key: "why", Component: WhyChooseUs, fallback: "...Loading Why Choose Us"},
+    {
+      key: "contact",
+      Component: ContactForm,
+      fallback: "...Loading Contact Form",
+    },
+  ];
+
   return (
-    <div className="" dir="rtl">
+    // Added overflow-x-hidden to prevent horizontal scroll
+    <div className="overflow-x-hidden w-full max-w-full" dir="rtl">
       <SeoHead
         title="Professional Website Creation | TrueFolio"
         description="TrueFolio delivers fast, SEO-optimized, modern websites with elegant UX tailored to your business."
@@ -54,50 +87,9 @@ export default function Landing() {
 
       <Hero />
 
-      <Suspense
-        fallback={
-          <div style={{padding: "2rem", textAlign: "center", color: "#999"}}>
-            ...Loading services
-          </div>
-        }>
-        <Services />
-      </Suspense>
-
-      <Suspense
-        fallback={
-          <div style={{padding: "2rem", textAlign: "center", color: "#999"}}>
-            ...Loading About Us
-          </div>
-        }>
-        <About />
-      </Suspense>
-
-      {/* <Suspense
-        fallback={
-          <div style={{padding: "2rem", textAlign: "center", color: "#999"}}>
-            ...Loading Portfolio
-          </div>
-        }>
-        <Portfolio />
-      </Suspense> */}
-
-      <Suspense
-        fallback={
-          <div style={{padding: "2rem", textAlign: "center", color: "#999"}}>
-            ...Loading Stats
-          </div>
-        }>
-        <Stats />
-      </Suspense>
-
-      <Suspense
-        fallback={
-          <div style={{padding: "2rem", textAlign: "center", color: "#999"}}>
-            ...Loading Why Choose Us
-          </div>
-        }>
-        <WhyChooseUs />
-      </Suspense>
+      {sections.map(({key, Component, fallback}) => (
+        <LazySection key={key} Component={Component} fallbackText={fallback} />
+      ))}
     </div>
   );
 }

@@ -9,6 +9,11 @@ export default {
 	],
 	theme: {
 		extend: {
+			fontFamily: {
+				sans: ["Inter", "Palestine-Regular", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+				arabic: ["Palestine-Regular", "KOGhorab-Regular", "sans-serif"],
+				lalezar: ["Lalezar", "sans-serif"],
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',

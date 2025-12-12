@@ -1,5 +1,6 @@
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import {
+  Clock4,
   Facebook,
   Instagram,
   Linkedin,
@@ -7,9 +8,8 @@ import {
   MapPin,
   Phone,
   Twitter,
-  Clock4,
-  Send,
 } from "lucide-react";
+import { useEffect } from "react";
 
 const cardVariants = {
   hidden: {opacity: 0, y: 24},
@@ -21,25 +21,25 @@ const cardVariants = {
 };
 
 export default function Contact() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <div
       className="relative min-h-screen bg-[#f8f9fa] text-slate-900"
       dir="rtl">
       {/* Hero */}
-      <section className="relative w-full h-[50vh] flex items-center justify-center py-0 px-4 overflow-hidden bg-gradient-to-b from-[#2c3e50] via-[#1b263b] to-[#0f172a]">
-        <div className="absolute top-[-160px] left-[-90px] w-[520px] h-[520px] rounded-full bg-gradient-to-br from-cyan-400/35 via-blue-500/25 to-purple-500/25 blur-3xl" />
-        <div className="absolute bottom-[-180px] right-[-100px] w-[480px] h-[480px] rounded-full bg-gradient-to-tr from-indigo-500/25 via-sky-400/20 to-emerald-400/15 blur-3xl" />
+      <section className="relative w-full min-h-[50vh] md:h-[40vh] flex items-center justify-center py-12 md:py-0 px-4 overflow-hidden bg-gradient-to-b from-[#2c3e50] via-[#1b263b] to-[#0f172a]">
+        <div className="absolute top-[-100px] sm:top-[-160px] left-[-60px] sm:left-[-90px] w-[280px] sm:w-[520px] h-[280px] sm:h-[520px] rounded-full bg-gradient-to-br from-cyan-400/35 via-blue-500/25 to-purple-500/25 blur-3xl" />
+        <div className="absolute bottom-[-120px] sm:bottom-[-180px] right-[-60px] sm:right-[-100px] w-[260px] sm:w-[480px] h-[260px] sm:h-[480px] rounded-full bg-gradient-to-tr from-indigo-500/25 via-sky-400/20 to-emerald-400/15 blur-3xl" />
 
         <div className="max-w-6xl mx-auto relative z-10 text-center text-white">
           <motion.h1
             initial={{opacity: 0, y: 20}}
             animate={{opacity: 1, y: 0}}
             transition={{duration: 0.7}}
-            className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 drop-shadow-md"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-4 sm:mb-6 drop-shadow-md"
             style={{fontFamily: "Zaatar-Regular, sans-serif"}}>
             تواصل معنا
           </motion.h1>
@@ -48,7 +48,7 @@ export default function Contact() {
             initial={{opacity: 0, y: 20}}
             animate={{opacity: 1, y: 0}}
             transition={{duration: 0.8, delay: 0.1}}
-            className="text-lg md:text-xl text-slate-200/80 max-w-3xl mx-auto leading-relaxed"
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200/80 max-w-3xl mx-auto leading-relaxed px-2"
             style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
             نرافقك في كل خطوة. سواء كنت تبحث عن استشارة أو عرض سعر أو شراكة
             طويلة المدى، فريقنا جاهز للاستماع والرد بسرعة.
@@ -94,14 +94,14 @@ export default function Contact() {
       </section>
 
       {/* Contact methods */}
-      <section className="relative max-w-6xl mx-auto px-4 -mt-12 z-20">
+      <section className="relative max-w-6xl mx-auto px-3 sm:px-4 -mt-8 sm:-mt-12 z-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {[
             {
               icon: Mail,
               title: "البريد الإلكتروني",
-              value: "hello@truefolio.com",
-              href: "mailto:hello@truefolio.com",
+              value: "info@truefolio.com",
+              href: "mailto:info@truefolio.com",
               color: "from-rose-400 to-red-500",
             },
             {
@@ -146,6 +146,7 @@ export default function Contact() {
                   {item.href ? (
                     <a
                       href={item.href}
+                      dir={item.icon === Mail ? "ltr" : undefined}
                       className="text-lg font-semibold text-slate-900 hover:underline decoration-2 decoration-slate-300">
                       {item.value}
                     </a>

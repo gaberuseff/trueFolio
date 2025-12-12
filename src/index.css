@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #e9eaebb9;
+  --bg-primary: #e9eaeb49;
   --gradient-blue-start: #9bafd9;
   --gradient-blue-end: #103783;
   --gradient-green-start: #2d6a4f;
@@ -45,8 +45,29 @@
   font-display: swap;
 }
 
+/* Google Fonts Import */
+@import url("https://fonts.googleapis.com/css2?family=Lalezar&family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+/* Prevent horizontal overflow */
+body,
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body,
 html,
 * {
-  font-family: "Palestine-Regular", sans-serif;
+  font-family: "Inter", "Palestine-Regular", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Utility class for Lalezar font */
+.font-lalezar {
+  font-family: "Lalezar", sans-serif;
+}
+
+/* Utility class for Arabic fonts */
+.font-arabic {
+  font-family: "Palestine-Regular", "KOGhorab-Regular", sans-serif;
 }
