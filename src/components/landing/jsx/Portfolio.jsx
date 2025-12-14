@@ -66,7 +66,7 @@ export default function Portfolio() {
   const navigate = useNavigate();
 
   const containerVariants = {
-    hidden: {opacity: 0},
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
@@ -100,14 +100,14 @@ export default function Portfolio() {
       <div className="max-w-7xl mx-auto">
         {/* العنوان */}
         <motion.div
-          initial={{opacity: 0, y: -30}}
-          whileInView={{opacity: 1, y: 0}}
-          viewport={{once: true}}
-          transition={{duration: 0.6}}
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16">
           <h2
             className="text-5xl font-black text-[#1b263b] mb-4"
-            style={{fontFamily: "KOGhorab-Regular, sans-serif"}}>
+            style={{ fontFamily: "'Tajawal', sans-serif" }}>
             أعمالنا
           </h2>
           <div className="w-16 h-1 bg-gradient-to-r from-[var(--gradient-blue-start)] to-[var(--gradient-blue-end)] mx-auto rounded-full" />
@@ -118,7 +118,7 @@ export default function Portfolio() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{once: true, margin: "-100px"}}
+          viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <motion.div
@@ -144,46 +144,46 @@ export default function Portfolio() {
                 />
                 {/* طبقة سوداء خفيفة عند الـ hover */}
                 <motion.div
-                  initial={{opacity: 0}}
+                  initial={{ opacity: 0 }}
                   animate={{
                     opacity: hoveredId === project.id ? 0.3 : 0,
                   }}
-                  transition={{duration: 0.3}}
+                  transition={{ duration: 0.3 }}
                   className="absolute inset-0 bg-black"
                 />
               </div>
 
               {/* المحتوى عند الـ Hover */}
               <motion.div
-                initial={{opacity: 0}}
+                initial={{ opacity: 0 }}
                 animate={{
                   opacity: hoveredId === project.id ? 1 : 0,
                 }}
-                transition={{duration: 0.3}}
+                transition={{ duration: 0.3 }}
                 className="absolute inset-0 bg-black/85 flex flex-col items-start justify-center p-8 text-right">
                 {/* اسم المشروع */}
                 <motion.h3
-                  initial={{y: 20, opacity: 0}}
+                  initial={{ y: 20, opacity: 0 }}
                   animate={{
                     y: hoveredId === project.id ? 0 : 20,
                     opacity: hoveredId === project.id ? 1 : 0,
                   }}
-                  transition={{delay: 0.1, duration: 0.3}}
+                  transition={{ delay: 0.1, duration: 0.3 }}
                   className="text-white text-3xl font-black mb-4"
-                  style={{fontFamily: "KOGhorab-Regular, sans-serif"}}>
+                  style={{ fontFamily: "'Tajawal', sans-serif" }}>
                   {project.title}
                 </motion.h3>
 
                 {/* وصف المشروع */}
                 <motion.p
-                  initial={{y: 20, opacity: 0}}
+                  initial={{ y: 20, opacity: 0 }}
                   animate={{
                     y: hoveredId === project.id ? 0 : 20,
                     opacity: hoveredId === project.id ? 1 : 0,
                   }}
-                  transition={{delay: 0.2, duration: 0.3}}
+                  transition={{ delay: 0.2, duration: 0.3 }}
                   className="text-gray-300 text-lg mb-6"
-                  style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
+                  style={{ fontFamily: "'Tajawal', sans-serif" }}>
                   {project.description}
                 </motion.p>
 
@@ -192,15 +192,15 @@ export default function Portfolio() {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{y: 20, opacity: 0, scale: 0.8}}
+                  initial={{ y: 20, opacity: 0, scale: 0.8 }}
                   animate={{
                     y: hoveredId === project.id ? 0 : 20,
                     opacity: hoveredId === project.id ? 1 : 0,
                     scale: hoveredId === project.id ? 1 : 0.8,
                   }}
-                  transition={{delay: 0.3, duration: 0.3}}
-                  whileHover={{scale: 1.1, rotate: 5}}
-                  whileTap={{scale: 0.95}}
+                  transition={{ delay: 0.3, duration: 0.3 }}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileTap={{ scale: 0.95 }}
                   className="w-14 h-14 bg-gradient-to-br from-[var(--gradient-blue-start)] 
                     to-[var(--gradient-blue-end)] rounded-full flex items-center justify-center shadow-xl">
                   <ExternalLink size={20} color="white" strokeWidth={2.5} />
@@ -215,15 +215,15 @@ export default function Portfolio() {
 
         {/* زر عرض الكل */}
         <motion.div
-          initial={{opacity: 0, y: 30}}
-          whileInView={{opacity: 1, y: 0}}
-          viewport={{once: true}}
-          transition={{delay: 0.5, duration: 0.6}}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.6 }}
           className="mt-12 flex justify-center">
           <MotionButton
             variant="blue"
             size="lg"
-            style={{fontFamily: "KOGhorab-Regular, sans-serif"}}
+            style={{ fontFamily: "'Tajawal', sans-serif" }}
             onClick={() => navigate("/portfolio")}>
             عرض الكل
             <svg

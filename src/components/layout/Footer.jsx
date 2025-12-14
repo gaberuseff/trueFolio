@@ -1,20 +1,20 @@
-import {motion} from "framer-motion";
-import {Link} from "react-router-dom";
-import {MotionButton} from "../ui/MotionButton";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { MotionButton } from "../ui/MotionButton";
 
 const quickLinks = [
-  {label: "الصفحة الرئيسية", href: "/"},
-  {label: "أعمالنا", href: "/#portfolio"},
-  {label: "خدماتنا", href: "/#services"},
-  {label: "نبذة عنا", href: "/#about"},
-  {label: "تواصل معنا", href: "/contact"},
+  { label: "الصفحة الرئيسية", href: "/" },
+  { label: "أعمالنا", href: "/#portfolio" },
+  { label: "خدماتنا", href: "/#services" },
+  { label: "نبذة عنا", href: "/#about" },
+  { label: "تواصل معنا", href: "/contact" },
 ];
 
 const services = [
-  {label: "تصميم المواقع", href: "/services"},
-  {label: "تطوير التطبيقات", href: "/services"},
-  {label: "التسويق الرقمي", href: "/services"},
-  {label: "الهوية البصرية", href: "/services"},
+  { label: "تصميم المواقع", href: "/services" },
+  { label: "تطوير التطبيقات", href: "/services" },
+  { label: "التسويق الرقمي", href: "/services" },
+  { label: "الهوية البصرية", href: "/services" },
 ];
 
 export default function Footer() {
@@ -22,32 +22,32 @@ export default function Footer() {
     <footer
       className="relative w-full bg-white text-slate-900 overflow-hidden border-t border-gray-200"
       dir="rtl">
-      <div className="relative max-w-7xl mx-auto px-6 py-20">
+      <div className="relative max-w-7xl mx-auto px-6 py-12">
         {/* Main Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Section */}
           <motion.div
-            initial={{opacity: 0, y: 20}}
-            whileInView={{opacity: 1, y: 0}}
-            viewport={{once: true}}
-            transition={{duration: 0.5}}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
             className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6">
               <img
                 src="/logo.png"
                 alt="تروفوليو"
-                className="h-12 w-auto object-contain"
+                className="h-20 w-auto object-contain"
               />
             </div>
             <p
-              className="text-slate-600 leading-relaxed mb-6"
-              style={{fontFamily: "Tajawal, sans-serif"}}>
+              className="text-slate-600 leading-relaxed mb-6 text-base"
+              style={{ fontFamily: "Tajawal, sans-serif" }}>
               نحول أفكارك الرقمية إلى واقع ملموس بأحدث التقنيات والحلول المبتكرة
             </p>
             <div className="flex gap-3">
               <a
                 href="https://facebook.com"
-                className="w-10 h-10 bg-gray-100 hover:bg-blue-600 hover:text-white text-slate-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+                className="w-10 h-10 bg-gray-100 hover:bg-blue-600 hover:text-white text-slate-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
                 aria-label="Facebook">
                 <svg
                   className="w-5 h-5"
@@ -58,7 +58,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://instagram.com"
-                className="w-10 h-10 bg-gray-100 hover:bg-pink-600 hover:text-white text-slate-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+                className="w-10 h-10 bg-gray-100 hover:bg-pink-600 hover:text-white text-slate-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
                 aria-label="Instagram">
                 <svg
                   className="w-5 h-5"
@@ -69,7 +69,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://twitter.com"
-                className="w-10 h-10 bg-gray-100 hover:bg-sky-500 hover:text-white text-slate-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+                className="w-10 h-10 bg-gray-100 hover:bg-sky-500 hover:text-white text-slate-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
                 aria-label="Twitter">
                 <svg
                   className="w-5 h-5"
@@ -80,7 +80,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://linkedin.com"
-                className="w-10 h-10 bg-gray-100 hover:bg-blue-700 hover:text-white text-slate-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+                className="w-10 h-10 bg-gray-100 hover:bg-blue-700 hover:text-white text-slate-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
                 aria-label="LinkedIn">
                 <svg
                   className="w-5 h-5"
@@ -94,26 +94,26 @@ export default function Footer() {
 
           {/* Quick Links */}
           <motion.div
-            initial={{opacity: 0, y: 20}}
-            whileInView={{opacity: 1, y: 0}}
-            viewport={{once: true}}
-            transition={{duration: 0.5, delay: 0.1}}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="lg:col-span-1">
             <h3
-              className="text-lg font-bold mb-6 text-slate-900"
-              style={{fontFamily: "Cairo, sans-serif"}}>
+              className="text-xl font-bold mb-6 text-slate-900"
+              style={{ fontFamily: "Cairo, sans-serif" }}>
               روابط سريعة
             </h3>
             <ul
-              className="space-y-3"
-              style={{fontFamily: "Tajawal, sans-serif"}}>
+              className="space-y-3 text-base"
+              style={{ fontFamily: "Tajawal, sans-serif" }}>
               {quickLinks.map((link, index) => (
                 <motion.li
                   key={link.href}
-                  initial={{opacity: 0, x: -20}}
-                  whileInView={{opacity: 1, x: 0}}
-                  viewport={{once: true}}
-                  transition={{duration: 0.3, delay: 0.1 + index * 0.05}}>
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}>
                   <Link
                     to={link.href}
                     className="text-slate-600 hover:text-blue-600 transition-colors duration-300 flex items-center gap-2 group">
@@ -138,19 +138,19 @@ export default function Footer() {
 
           {/* Contact Info */}
           <motion.div
-            initial={{opacity: 0, y: 20}}
-            whileInView={{opacity: 1, y: 0}}
-            viewport={{once: true}}
-            transition={{duration: 0.5, delay: 0.3}}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
             className="lg:col-span-1">
             <h3
-              className="text-lg font-bold mb-6 text-slate-900"
-              style={{fontFamily: "Cairo, sans-serif"}}>
+              className="text-xl font-bold mb-6 text-slate-900"
+              style={{ fontFamily: "Cairo, sans-serif" }}>
               تواصل معنا
             </h3>
             <div
               className="space-y-4"
-              style={{fontFamily: "Tajawal, sans-serif"}}>
+              style={{ fontFamily: "Tajawal, sans-serif" }}>
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                   <svg
@@ -172,7 +172,7 @@ export default function Footer() {
                     />
                   </svg>
                 </div>
-                <p className="text-slate-600 text-sm leading-relaxed">
+                <p className="text-slate-600 text-base leading-relaxed">
                   فيلا 31 صالح حتي باشا
                   <br />
                   هليوبوليس - المطار
@@ -198,7 +198,7 @@ export default function Footer() {
                 </div>
                 <a
                   href="tel:+201111111111"
-                  className="text-slate-600 hover:text-green-600 transition-colors text-sm">
+                  className="text-slate-600 hover:text-green-600 transition-colors text-base">
                   +20 111 111 1111
                 </a>
               </div>
@@ -221,7 +221,7 @@ export default function Footer() {
                 <a
                   href="mailto:info@truefolio.com"
                   dir="ltr"
-                  className="text-slate-600 hover:text-purple-600 transition-colors text-sm">
+                  className="text-slate-600 hover:text-purple-600 transition-colors text-base">
                   info@truefolio.com
                 </a>
               </div>
@@ -241,7 +241,7 @@ export default function Footer() {
                     />
                   </svg>
                 </div>
-                <span className="text-slate-600 text-sm">
+                <span className="text-slate-600 text-base">
                   رقم التسجيل: 678-81-825
                 </span>
               </div>
@@ -251,21 +251,21 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <motion.div
-          initial={{opacity: 0}}
-          whileInView={{opacity: 1}}
-          viewport={{once: true}}
-          transition={{duration: 0.5, delay: 0.5}}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.5 }}
           className="border-t border-gray-200 pt-8 mt-12">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p
               className="text-slate-600 text-sm"
-              style={{fontFamily: "Tajawal, sans-serif"}}>
+              style={{ fontFamily: "Tajawal, sans-serif" }}>
               © 2025 <span className="text-blue-600 font-bold">تروفوليو</span>.
               جميع الحقوق محفوظة
             </p>
             <div
               className="flex gap-6 text-sm"
-              style={{fontFamily: "Tajawal, sans-serif"}}>
+              style={{ fontFamily: "Tajawal, sans-serif" }}>
               <Link
                 to="/privacy"
                 className="text-slate-600 hover:text-blue-600 transition-colors">

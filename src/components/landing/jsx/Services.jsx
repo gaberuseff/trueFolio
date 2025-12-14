@@ -1,4 +1,4 @@
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -42,12 +42,12 @@ const services = [
 function Services() {
   // تأثيرات الحاوية - تنسق ظهور العناصر الأبناء
   const containerVariants = {
-    hidden: {opacity: 0},
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.12, // إبطاء قليلًا بين العناصر
-        delayChildren: 0.1, // تأخير قبل بدء التأثيرات
+        staggerChildren: 0.08, // تقليل التأخير لتحسين الأداء
+        delayChildren: 0.05, // تقليل التأخير قبل بدء التأثيرات
       },
     },
   };
@@ -74,34 +74,35 @@ function Services() {
     <section id="services" className="w-full bg-gray-50 py-16 px-2">
       <div className="max-w-7xl mx-auto flex flex-col items-center justify-center">
         <motion.div
-          initial={{opacity: 0, y: -30}}
-          whileInView={{opacity: 1, y: 0}}
-          viewport={{once: true}}
-          transition={{duration: 0.6}}
-          className="text-center mb-12">
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+          style={{ willChange: 'transform' }}>
           {/* Badge */}
           <motion.div
-            initial={{opacity: 0, y: 20}}
-            whileInView={{opacity: 1, y: 0}}
-            viewport={{once: true}}
-            transition={{delay: 0.2, duration: 0.5}}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.5 }}
             className="inline-block mb-4">
             <span
               className="bg-gray-200
               text-gray-500 px-5 py-2 rounded-full text-xs font-bold"
-              style={{fontFamily: "KOGhorab-Regular, sans-serif"}}>
+              style={{ fontFamily: "'Tajawal', sans-serif" }}>
               شركة تروفوليو
             </span>
           </motion.div>
 
           <h2
             className="text-5xl font-black text-[#1b263b] mb-4 mt-2"
-            style={{fontFamily: "KOGhorab-Regular, sans-serif"}}>
+            style={{ fontFamily: "'Tajawal', sans-serif" }}>
             خدماتنا
           </h2>
           <div
             className="w-16 h-1 bg-gradient-to-r 
-            from-[var(--gradient-blue-start)] to-[var(--gradient-blue-end)] mx-auto rounded-full"
+            from-[var(--gradient-green-start)] to-[var(--gradient-green-end)] mx-auto rounded-full"
           />
         </motion.div>
 
@@ -109,22 +110,22 @@ function Services() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{once: true, margin: "-100px"}}
-          className="w-full flex flex-wrap gap-6 justify-center items-center">
+          viewport={{ once: true, margin: "-50px", amount: 0.1 }}
+          className="w-full flex flex-wrap gap-6 justify-center items-center"
+          style={{ willChange: 'transform' }}>
           {services.map((service, idx) => (
             <motion.div
               key={idx}
               variants={cardVariants}
               whileHover={{
                 scale: 1.06,
-                y: -6,
                 backgroundColor: services[idx].hoverBg,
                 color: services[idx].hoverText,
                 transition: {
                   duration: 0.4,
                   ease: "easeInOut",
-                  backgroundColor: {duration: 0},
-                  color: {duration: 0},
+                  backgroundColor: { duration: 0 },
+                  color: { duration: 0 },
                 },
               }}
               className="group flex flex-col items-center justify-center 
@@ -140,12 +141,12 @@ function Services() {
                 />
               </div>
               <motion.span
-                className="text-[1.18rem] font-black text-center text-gray-600
+                className="text-[1rem] font-black text-center text-gray-600
                   leading-tight font-[Palestine-Regular] transition-colors duration-500"
-                style={{fontFamily: "Palestine-Regular, sans-serif"}}
+                style={{ fontFamily: "'Tajawal', sans-serif" }}
                 whileHover={{
                   color: services[idx].hoverText,
-                  transition: {duration: 0, ease: "linear"},
+                  transition: { duration: 0, ease: "linear" },
                 }}>
                 {service.title}
               </motion.span>

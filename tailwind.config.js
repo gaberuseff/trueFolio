@@ -10,9 +10,9 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ["Inter", "Palestine-Regular", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
-				arabic: ["Palestine-Regular", "KOGhorab-Regular", "sans-serif"],
+				sans: ["Tajawal", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
 				lalezar: ["Lalezar", "sans-serif"],
+				arabic: ["Tajawal", "sans-serif"],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

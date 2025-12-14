@@ -1,5 +1,5 @@
-import {motion} from "framer-motion";
-import {useEffect} from "react";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 import PortfolioSection from "@/components/landing/jsx/Portfolio";
 
 export default function PortfolioPage() {
@@ -16,41 +16,41 @@ export default function PortfolioPage() {
         {/* Background Decorative Elements */}
         <motion.div
           className="absolute top-[-80px] sm:top-0 right-5 sm:right-20 w-[200px] sm:w-96 h-[200px] sm:h-96 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-500 rounded-full opacity-30 blur-3xl"
-          animate={{y: [0, 30, 0], x: [0, 20, 0]}}
-          transition={{duration: 10, repeat: Infinity}}
+          animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
+          transition={{ duration: 10, repeat: Infinity }}
         />
         <motion.div
           className="absolute bottom-[-100px] sm:bottom-10 left-2 sm:left-10 w-[150px] sm:w-72 h-[150px] sm:h-72 bg-gradient-to-br from-indigo-500 via-sky-400 to-emerald-400 rounded-full opacity-20 blur-3xl"
-          animate={{y: [0, -30, 0], x: [0, -20, 0]}}
-          transition={{duration: 12, repeat: Infinity}}
+          animate={{ y: [0, -30, 0], x: [0, -20, 0] }}
+          transition={{ duration: 12, repeat: Infinity }}
         />
 
         <div className="max-w-7xl w-full relative z-10" dir="rtl">
           <div className="text-center">
             <h1
-              className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold text-white mb-4 sm:mb-8 drop-shadow-lg"
-              style={{fontFamily: "Zaatar-Regular, sans-serif"}}>
+              className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-8 drop-shadow-lg"
+              style={{ fontFamily: "'Tajawal', sans-serif" }}>
               أعمالنا
             </h1>
 
             <motion.p
-              initial={{opacity: 1, y: 0}}
-              animate={{opacity: 1, y: 0}}
-              transition={{duration: 0.8, delay: 0.2}}
-              className="text-sm sm:text-base md:text-xl lg:text-2xl text-white/80 max-w-3xl mx-auto mb-6 sm:mb-12 leading-relaxed px-2"
-              style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
+              initial={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-xs sm:text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-6 sm:mb-12 leading-relaxed px-2"
+              style={{ fontFamily: "'Tajawal', sans-serif" }}>
               مجموعة مختارة من المشاريع التي أنجزناها لعملائنا، مع تركيز على
               الجودة، السرعة، وتجارب الاستخدام المميزة.
             </motion.p>
 
             <motion.div
-              animate={{y: [0, 10, 0]}}
-              transition={{duration: 2, repeat: Infinity}}
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
               className="flex justify-center mt-12">
               <div className="w-8 h-12 border-2 border-white/60 rounded-full flex items-start justify-center p-2">
                 <motion.div
-                  animate={{y: [0, 8, 0]}}
-                  transition={{duration: 2, repeat: Infinity}}
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
                   className="w-1 h-2 bg-white rounded-full"
                 />
               </div>
@@ -60,7 +60,7 @@ export default function PortfolioPage() {
 
         <svg
           className="absolute bottom-0 left-0 w-full"
-          style={{height: "80px"}}
+          style={{ height: "80px" }}
           viewBox="0 0 1440 120"
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg">
@@ -68,11 +68,11 @@ export default function PortfolioPage() {
             <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop
                 offset="0%"
-                style={{stopColor: "#ffffff", stopOpacity: 1}}
+                style={{ stopColor: "#ffffff", stopOpacity: 1 }}
               />
               <stop
                 offset="100%"
-                style={{stopColor: "#ffffff", stopOpacity: 1}}
+                style={{ stopColor: "#ffffff", stopOpacity: 1 }}
               />
             </linearGradient>
           </defs>

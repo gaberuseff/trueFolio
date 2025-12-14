@@ -12,56 +12,58 @@ import {
 import { useEffect } from "react";
 
 const cardVariants = {
-  hidden: {opacity: 0, y: 24},
+  hidden: { opacity: 0, y: 24 },
   show: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: {delay: 0.1 * i, duration: 0.6, ease: "easeOut"},
+    transition: { delay: 0.1 * i, duration: 0.6, ease: "easeOut" },
   }),
 };
 
 export default function Contact() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Force reflow to trigger animations
+    window.dispatchEvent(new Event("load"));
   }, []);
-  
+
   return (
     <div
       className="relative min-h-screen bg-[#f8f9fa] text-slate-900"
       dir="rtl">
       {/* Hero */}
       <section className="relative w-full min-h-[50vh] md:h-[40vh] flex items-center justify-center py-12 md:py-0 px-4 overflow-hidden bg-gradient-to-b from-[#2c3e50] via-[#1b263b] to-[#0f172a]">
-        <div className="absolute top-[-100px] sm:top-[-160px] left-[-60px] sm:left-[-90px] w-[280px] sm:w-[520px] h-[280px] sm:h-[520px] rounded-full bg-gradient-to-br from-cyan-400/35 via-blue-500/25 to-purple-500/25 blur-3xl" />
-        <div className="absolute bottom-[-120px] sm:bottom-[-180px] right-[-60px] sm:right-[-100px] w-[260px] sm:w-[480px] h-[260px] sm:h-[480px] rounded-full bg-gradient-to-tr from-indigo-500/25 via-sky-400/20 to-emerald-400/15 blur-3xl" />
+        <div className="absolute top-[-100px] sm:top-[-160px] left-[-60px] sm:left-[-90px] w-[280px] sm:w-[520px] h-[280px] sm:h-[520px] rounded-full bg-gradient-to-br from-emerald-400/35 via-green-500/25 to-teal-500/25 blur-3xl" />
+        <div className="absolute bottom-[-120px] sm:bottom-[-180px] right-[-60px] sm:right-[-100px] w-[260px] sm:w-[480px] h-[260px] sm:h-[480px] rounded-full bg-gradient-to-tr from-teal-500/25 via-emerald-400/20 to-green-400/15 blur-3xl" />
 
         <div className="max-w-6xl mx-auto relative z-10 text-center text-white">
           <motion.h1
-            initial={{opacity: 0, y: 20}}
-            animate={{opacity: 1, y: 0}}
-            transition={{duration: 0.7}}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-4 sm:mb-6 drop-shadow-md"
-            style={{fontFamily: "Zaatar-Regular, sans-serif"}}>
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-8 drop-shadow-lg"
+            style={{ fontFamily: "'Tajawal', sans-serif" }}>
             تواصل معنا
           </motion.h1>
 
           <motion.p
-            initial={{opacity: 0, y: 20}}
-            animate={{opacity: 1, y: 0}}
-            transition={{duration: 0.8, delay: 0.1}}
-            className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200/80 max-w-3xl mx-auto leading-relaxed px-2"
-            style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-xs sm:text-sm md:text-base lg:text-lg text-white/80 max-w-3xl mx-auto mb-6 sm:mb-12 leading-relaxed px-2"
+            style={{ fontFamily: "'Tajawal', sans-serif" }}>
             نرافقك في كل خطوة. سواء كنت تبحث عن استشارة أو عرض سعر أو شراكة
             طويلة المدى، فريقنا جاهز للاستماع والرد بسرعة.
           </motion.p>
 
           <motion.div
-            animate={{y: [0, 12, 0]}}
-            transition={{duration: 2, repeat: Infinity}}
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
             className="mt-10 flex justify-center">
             <div className="w-9 h-14 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
               <motion.div
-                animate={{y: [0, 10, 0]}}
-                transition={{duration: 1.8, repeat: Infinity}}
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity }}
                 className="w-1 h-3 bg-white rounded-full"
               />
             </div>
@@ -70,7 +72,7 @@ export default function Contact() {
 
         <svg
           className="absolute bottom-0 left-0 w-full"
-          style={{height: "90px"}}
+          style={{ height: "90px" }}
           viewBox="0 0 1440 120"
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg">
@@ -78,11 +80,11 @@ export default function Contact() {
             <linearGradient id="contactWave" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop
                 offset="0%"
-                style={{stopColor: "#ffffff", stopOpacity: 1}}
+                style={{ stopColor: "#ffffff", stopOpacity: 1 }}
               />
               <stop
                 offset="100%"
-                style={{stopColor: "#ffffff", stopOpacity: 1}}
+                style={{ stopColor: "#ffffff", stopOpacity: 1 }}
               />
             </linearGradient>
           </defs>
@@ -109,7 +111,7 @@ export default function Contact() {
               title: "الهاتف",
               value: "0123456789",
               href: "tel:0123456789",
-              color: "from-indigo-400 to-blue-500",
+              color: "from-emerald-400 to-green-500",
             },
             {
               icon: MapPin,
@@ -130,8 +132,7 @@ export default function Contact() {
               key={item.title}
               variants={cardVariants}
               initial="hidden"
-              whileInView="show"
-              viewport={{once: true, amount: 0}}
+              animate="show"
               custom={idx}
               className="group relative overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-[0_15px_35px_rgba(15,23,42,0.08)] p-5">
               <div
@@ -163,11 +164,18 @@ export default function Contact() {
       </section>
 
       {/* Form + info */}
+      <section
+        id="form-section"
+        className="relative max-w-6xl mx-auto px-4 py-16">
+        {/* The form content can be added here */}
+      </section>
 
       {/* Social links */}
       <section className="max-w-6xl mx-auto px-4 py-12 pb-16">
         <div className="mb-8 text-center">
-          <p className="text-sm font-semibold text-cyan-600">وسائل التواصل</p>
+          <p className="text-sm font-semibold text-emerald-600">
+            وسائل التواصل
+          </p>
           <h3 className="text-3xl md:text-4xl font-black mt-2 text-slate-900">
             ابق على اتصال معنا
           </h3>
@@ -211,8 +219,7 @@ export default function Contact() {
               variants={cardVariants}
               initial="hidden"
               whileInView="show"
-              viewport={{once: true}}
-              custom={idx}
+              animate="show"
               className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 flex items-center gap-4 shadow-[0_15px_40px_rgba(15,23,42,0.08)] transition hover:translate-y-[-4px]">
               <span
                 className={`${item.bg} rounded-xl w-12 h-12 flex items-center justify-center text-white shadow-lg shadow-black/20`}>

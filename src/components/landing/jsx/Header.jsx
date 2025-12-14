@@ -1,14 +1,14 @@
-import {AnimatePresence, motion} from "framer-motion";
-import {X} from "lucide-react";
-import {useEffect, useState} from "react";
-import {Link, useLocation} from "react-router-dom";
-import {MotionButton} from "../../ui/MotionButton";
+import { AnimatePresence, motion } from "framer-motion";
+import { X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { MotionButton } from "../../ui/MotionButton";
 
 const navLinks = [
-  {label: "الصفحة الرئيسية", href: "/"},
-  {label: "نبذة عنا", href: "/about"},
-  {label: "تواصل معنا", href: "/contact"},
-  {label: "تسجيل", href: "/signup"},
+  { label: "الصفحة الرئيسية", href: "/" },
+  { label: "نبذة عنا", href: "/about" },
+  { label: "تواصل معنا", href: "/contact" },
+  { label: "تسجيل", href: "/signup" },
 ];
 
 function Header() {
@@ -42,31 +42,30 @@ function Header() {
   }, [location]);
 
   // Destructure motion components to satisfy the linter
-  const {header: MotionHeader, div: MotionDiv} = motion;
+  const { header: MotionHeader, div: MotionDiv } = motion;
 
   return (
     <>
       {/* Added w-full max-w-full to prevent overflow */}
       <MotionHeader
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full max-w-full ${
-          scrolled
-            ? "bg-white/90 backdrop-blur-md shadow-md py-2"
-            : "bg-white/40 backdrop-blur-md shadow-sm py-3 sm:py-4"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full max-w-full ${scrolled
+          ? "bg-white/90 backdrop-blur-md shadow-md py-2"
+          : "bg-white/40 backdrop-blur-md shadow-sm py-3 sm:py-4"
+          }`}
         dir="rtl"
-        initial={{y: -100}}
-        animate={{y: 0}}
-        transition={{duration: 0.5}}>
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}>
         {/* Changed container to use proper responsive classes */}
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-12 sm:h-14">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
               <Link to="/" className="flex items-center">
                 <img
                   src="./logo.png"
                   alt="تروفوليو"
-                  className="h-8 sm:h-10 md:h-12 w-auto object-contain"
+                  className="h-16 sm:h-18 md:h-20 w-auto object-contain"
                 />
               </Link>
             </div>
@@ -77,12 +76,11 @@ function Header() {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`px-3 py-2 rounded-lg text-[#1b263b] hover:bg-gray-100 transition-all font-medium text-sm ${
-                    location.pathname === link.href
-                      ? "bg-gray-100 font-bold"
-                      : ""
-                  }`}
-                  style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
+                  className={`px-4 py-1.5 transition-all font-medium text-base ${location.pathname === link.href
+                    ? "bg-[var(--gradient-green-end)] text-white font-bold"
+                    : "text-[#1b263b]"
+                    }`}
+                  style={{ fontFamily: "'Tajawal', sans-serif" }}>
                   {link.label}
                 </Link>
               ))}
@@ -93,9 +91,9 @@ function Header() {
               <MotionButton
                 to="/contact"
                 variant="blue"
-                size="sm"
+                size="md"
                 className="text-xs sm:text-sm"
-                style={{fontFamily: "KOGhorab-Regular, sans-serif"}}>
+                style={{ fontFamily: "'Tajawal', sans-serif" }}>
                 تواصل معنا
               </MotionButton>
             </div>
@@ -127,20 +125,20 @@ function Header() {
           <>
             {/* Overlay */}
             <MotionDiv
-              initial={{opacity: 0}}
-              animate={{opacity: 1}}
-              exit={{opacity: 0}}
-              transition={{duration: 0.2}}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
               className="fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
               onClick={closeMenu}
             />
 
             {/* Side Menu - Fixed positioning issues */}
             <MotionDiv
-              initial={{x: "100%"}}
-              animate={{x: 0}}
-              exit={{x: "100%"}}
-              transition={{type: "spring", damping: 25, stiffness: 200}}
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="fixed top-0 right-0 bottom-0 w-[280px] sm:w-80 bg-white shadow-2xl z-50 overflow-y-auto max-w-full"
               dir="rtl">
               <div className="p-5">
@@ -148,7 +146,7 @@ function Header() {
                 <div className="flex items-center justify-between mb-8 mt-2">
                   <h2
                     className="text-xl font-bold text-[#1b263b]"
-                    style={{fontFamily: "KOGhorab-Regular, sans-serif"}}>
+                    style={{ fontFamily: "'Tajawal', sans-serif" }}>
                     القائمة
                   </h2>
                   <button
@@ -164,17 +162,16 @@ function Header() {
                   {navLinks.map((link, index) => (
                     <motion.div
                       key={link.href}
-                      initial={{opacity: 0, x: 20}}
-                      animate={{opacity: 1, x: 0}}
-                      transition={{delay: index * 0.05}}>
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}>
                       <Link
                         to={link.href}
-                        className={`block px-4 py-3 text-lg font-medium rounded-lg transition-colors ${
-                          location.pathname === link.href
-                            ? "bg-gray-100 text-[#1b263b] font-bold"
-                            : "text-[#1b263b] hover:bg-gray-50"
-                        }`}
-                        style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}
+                        className={`block px-4 py-3 text-lg font-medium rounded-lg transition-colors ${location.pathname === link.href
+                          ? "bg-gray-100 text-[#1b263b] font-bold"
+                          : "text-[#1b263b] hover:bg-gray-50"
+                          }`}
+                        style={{ fontFamily: "'Tajawal', sans-serif" }}
                         onClick={closeMenu}>
                         {link.label}
                       </Link>
@@ -184,9 +181,9 @@ function Header() {
 
                 {/* Contact Button in Menu */}
                 <motion.div
-                  initial={{opacity: 0, y: 20}}
-                  animate={{opacity: 1, y: 0}}
-                  transition={{delay: 0.3}}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
                   className="mt-8">
                   <MotionButton
                     to="/contact"
@@ -194,7 +191,7 @@ function Header() {
                     size="md"
                     className="w-full"
                     onClick={closeMenu}
-                    style={{fontFamily: "KOGhorab-Regular, sans-serif"}}>
+                    style={{ fontFamily: "'Tajawal', sans-serif" }}>
                     تواصل معنا
                   </MotionButton>
                 </motion.div>

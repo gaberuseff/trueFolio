@@ -1,6 +1,6 @@
-import {motion, AnimatePresence} from "framer-motion";
-import {MotionButton} from "@/components/ui/MotionButton";
-import {useState, useEffect} from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MotionButton } from "@/components/ui/MotionButton";
+import { useState, useEffect } from "react";
 
 export default function WhyChooseUs() {
   const services = [
@@ -48,14 +48,15 @@ export default function WhyChooseUs() {
       <div className="max-w-7xl mx-auto">
         {/* العنوان الرئيسي */}
         <motion.div
-          initial={{opacity: 0, y: -30}}
-          whileInView={{opacity: 1, y: 0}}
-          viewport={{once: true}}
-          transition={{duration: 0.6}}
-          className="text-center mb-16">
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+          style={{ willChange: 'transform' }}>
           <h2
             className="text-4xl md:text-5xl font-black text-[#1b263b] mb-4"
-            style={{fontFamily: "KOGhorab-Regular, sans-serif"}}>
+            style={{ fontFamily: "'Tajawal', sans-serif" }}>
             لماذا تختارنا؟
           </h2>
         </motion.div>
@@ -64,26 +65,27 @@ export default function WhyChooseUs() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* الجانب الأيمن - النص المتغير */}
           <motion.div
-            initial={{opacity: 0, x: 50}}
-            whileInView={{opacity: 1, x: 0}}
-            viewport={{once: true}}
-            transition={{duration: 0.6}}
-            className="text-right order-2 lg:order-1">
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+            className="text-right order-2 lg:order-1"
+            style={{ willChange: 'transform' }}>
             {/* الخدمات المتغيرة */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
-                initial={{opacity: 0, y: 20}}
-                animate={{opacity: 1, y: 0}}
-                exit={{opacity: 0, y: -20}}
-                transition={{duration: 0.5}}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
                 className="mb-8">
                 {/* الأيقونة والعنوان */}
                 <div className="flex items-center justify-end gap-3 mb-6">
                   <motion.h3
-                    className="text-3xl md:text-4xl font-black text-[var(--gradient-blue-end)]"
+                    className="text-3xl md:text-4xl font-black text-[var(--gradient-green-end)]"
                     style={{
-                      fontFamily: "KOGhorab-Regular, sans-serif",
+                      fontFamily: "'Tajawal', sans-serif",
                     }}>
                     {currentService.title}
                   </motion.h3>
@@ -93,7 +95,7 @@ export default function WhyChooseUs() {
                 {/* الوصف */}
                 <p
                   className="text-lg text-[#415a77] leading-relaxed mb-8"
-                  style={{fontFamily: "KoGaliModern-Bold, sans-serif"}}>
+                  style={{ fontFamily: "'Tajawal', sans-serif" }}>
                   {currentService.description}
                 </p>
               </motion.div>
@@ -104,14 +106,13 @@ export default function WhyChooseUs() {
               {services.map((_, index) => (
                 <motion.button
                   key={index}
-                  className={`h-2 rounded-full transition-all ${
-                    index === currentIndex
-                      ? "w-8 bg-[var(--gradient-blue-end)]"
-                      : "w-2 bg-gray-300"
-                  }`}
+                  className={`h-2 rounded-full transition-all ${index === currentIndex
+                    ? "w-8 bg-[var(--gradient-green-end)]"
+                    : "w-2 bg-gray-300"
+                    }`}
                   onClick={() => setCurrentIndex(index)}
-                  whileHover={{scale: 1.2}}
-                  whileTap={{scale: 0.9}}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
                 />
               ))}
             </div>
@@ -119,11 +120,12 @@ export default function WhyChooseUs() {
 
           {/* الجانب الأيسر - الصورة التوضيحية */}
           <motion.div
-            initial={{opacity: 0, x: -50}}
-            whileInView={{opacity: 1, x: 0}}
-            viewport={{once: true}}
-            transition={{duration: 0.6}}
-            className="relative order-1 lg:order-2">
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="relative order-1 lg:order-2"
+            style={{ willChange: 'transform' }}>
             <img
               src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&q=80"
               alt="فريق العمل"
