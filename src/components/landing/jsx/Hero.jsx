@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 
 // Destructure the motion components we need
 const { div: MotionDiv } = motion;
@@ -9,17 +9,27 @@ export default function Hero() {
   const toolIcons = ["css3.svg", "html5.svg", "js.svg", "wordpress.svg"];
   const sectionRef = useRef(null);
 
-  // Track scroll position for parallax effect
-  const { scrollY } = useScroll();
+  // Track scroll position for parallax and 3D effects
+  const { scrollY, scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
 
   // Create parallax transforms for different icons (faster and larger movement)
   const icon1Y = useTransform(scrollY, [0, 300], [0, -300]);
   const icon2Y = useTransform(scrollY, [0, 300], [0, -400]);
 
+  // 3D perspective transforms
+  const rotateX = useTransform(scrollYProgress, [0, 1], [0, -25]); // Tilt backward (fold down)
+  const translateY = useTransform(scrollYProgress, [0, 1], [0, -100]); // Descend
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]); // Slight shrink
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.3]); // Fade out
+
   return (
     <section
       className="w-full max-w-full overflow-x-hidden flex items-center 
-      justify-center py-8 sm:pt-8 sm:pb-16 px-3 sm:px-4 md:px-6 bg-gray-50">
+      justify-center py-8 sm:pt-8 sm:pb-16 px-3 sm:px-4 md:px-6 bg-gray-50"
+      style={{ perspective: "1200px" }}>
       <style>{`
         @keyframes underline-draw {
           0% { stroke-dashoffset: 1; }
@@ -31,7 +41,17 @@ export default function Hero() {
           100% { offset-distance: 100%; opacity: 1; }
         }
       `}</style>
-      <div ref={sectionRef} className="w-full max-w-7xl relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl py-8 sm:py-20">
+      <motion.div
+        ref={sectionRef}
+        className="w-full max-w-7xl relative overflow-hidden rounded-2xl sm:rounded-3xl py-8 sm:py-20"
+        style={{
+          rotateX,
+          translateY,
+          scale,
+          opacity,
+          transformStyle: "preserve-3d",
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+        }}>
         <picture className="absolute inset-0 z-0">
           <source srcSet="/hero2.webp" type="image/webp" />
           <img
@@ -254,7 +274,7 @@ export default function Hero() {
             </div>
           </MotionDiv>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const services = [
   {
@@ -40,6 +41,9 @@ const services = [
 ];
 
 function Services() {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [tappedIndex, setTappedIndex] = useState(null);
+
   // تأثيرات الحاوية - تنسق ظهور العناصر الأبناء
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -68,6 +72,14 @@ function Services() {
         ease: "easeOut",
       },
     },
+  };
+
+  const handleTap = (idx) => {
+    if (tappedIndex === idx) {
+      setTappedIndex(null);
+    } else {
+      setTappedIndex(idx);
+    }
   };
 
   return (
@@ -113,45 +125,57 @@ function Services() {
           viewport={{ once: true, margin: "-50px", amount: 0.1 }}
           className="w-full flex flex-wrap gap-6 justify-center items-center"
           style={{ willChange: 'transform' }}>
-          {services.map((service, idx) => (
-            <motion.div
-              key={idx}
-              variants={cardVariants}
-              whileHover={{
-                scale: 1.06,
-                backgroundColor: services[idx].hoverBg,
-                color: services[idx].hoverText,
-                transition: {
-                  duration: 0.4,
-                  ease: "easeInOut",
-                  backgroundColor: { duration: 0 },
-                  color: { duration: 0 },
-                },
-              }}
-              className="group flex flex-col items-center justify-center 
-                bg-[var(--bg-primary)] rounded-2xl w-[170px] h-[160px] p-4 mb-2 
-                select-none transition-colors duration-500">
-              <div className="mb-3 flex items-center justify-center">
-                <img
-                  src={service.icon}
-                  alt={service.title}
-                  width="48"
-                  height="48"
-                  className="object-contain"
-                />
-              </div>
-              <motion.span
-                className="text-[1rem] font-black text-center text-gray-600
-                  leading-tight font-[Palestine-Regular] transition-colors duration-500"
-                style={{ fontFamily: "'Tajawal', sans-serif" }}
+          {services.map((service, idx) => {
+            const isActive = hoveredIndex === idx || tappedIndex === idx;
+
+            return (
+              <motion.div
+                key={idx}
+                variants={cardVariants}
+                onHoverStart={() => setHoveredIndex(idx)}
+                onHoverEnd={() => setHoveredIndex(null)}
+                onTap={() => handleTap(idx)}
                 whileHover={{
-                  color: services[idx].hoverText,
-                  transition: { duration: 0, ease: "linear" },
-                }}>
-                {service.title}
-              </motion.span>
-            </motion.div>
-          ))}
+                  scale: 1.06,
+                  backgroundColor: services[idx].hoverBg,
+                  transition: {
+                    duration: 0.4,
+                    ease: "easeInOut",
+                    backgroundColor: { duration: 0 },
+                  },
+                }}
+                animate={{
+                  backgroundColor: isActive ? services[idx].hoverBg : 'var(--bg-primary)',
+                  scale: isActive && tappedIndex === idx ? 1.06 : 1,
+                }}
+                transition={{
+                  backgroundColor: { duration: 0.3 },
+                  scale: { duration: 0.3 },
+                }}
+                className="group flex flex-col items-center justify-center 
+                  bg-[var(--bg-primary)] rounded-2xl w-[170px] h-[160px] p-4 mb-2 
+                  select-none cursor-pointer">
+                <div className="mb-3 flex items-center justify-center">
+                  <img
+                    src={service.icon}
+                    alt={service.title}
+                    width="48"
+                    height="48"
+                    className="object-contain"
+                  />
+                </div>
+                <span
+                  className="text-[1rem] font-black text-center
+                    leading-tight font-[Palestine-Regular] transition-colors duration-200"
+                  style={{
+                    fontFamily: "'Tajawal', sans-serif",
+                    color: isActive ? services[idx].hoverText : '#4B5563'
+                  }}>
+                  {service.title}
+                </span>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
